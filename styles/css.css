@@ -9,7 +9,12 @@
 
 :root {
     --h2-font: 'Smokum', cursive;
-    --text-font: 'EB Garamond', serif;
+    --h3-font:'Rubik Dirt', cursive;
+    --p-font: 'EB Garamond', serif;
+
+    --cover-color: rgb(172, 77, 0);
+    --cover-box-shadow: inset 0 0 2em rgb(58, 57, 57);
+    --paper-box-shadow: inset 0 0 1em rgb(141, 63, 0);
 }
 
 /* images bron https://www.pngwing.com/en/free-png-xxmck */
@@ -99,172 +104,108 @@ main {
     transform-style: preserve-3d;
 }
 
-main > section{
+main>section {
     --width: 50%;
     width: var(--width);
-    aspect-ratio: 1/1.5;
-
-    transform-style: preserve-3d;
-    transform: rotate(10deg);
-
-    filter: drop-shadow(1em 1em 2em black);
-
-    position: relative;
-    
-    display: flex;
-    justify-content: center;
-}
-
-main > section ul {
-    --width: 100%;
-    width: var(--width);
-    aspect-ratio: 1/1.5;
+    aspect-ratio: 1/3;
     list-style: none;
 
-    background-color: rgb(172, 77, 0);
-    box-shadow:
-        inset 0 0 2em rgb(58, 57, 57);
-        /* 1em 1em 2em black; */
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    position: relative;
-
-    transform-style: preserve-3d;
-    transition: 2.5s;
-}
-
-.growing,
-main > section {
-    --width: 100%;
-    transform: rotate(0deg);
-}
-
-main > section ul li {
-    width: 96%;
-    height: 97%;
+    background-color: rgb(88, 41, 2);
+    filter: drop-shadow(1em 1em 2em black);
 
     position: absolute;
 
-    background-color: white;
     transform-style: preserve-3d;
-    transform-origin: 50% -1%;
-    transform: rotateX(0);
-
-    overflow: hidden;
+    transition: 2.5s;
+    transform: rotate(10deg) translateY(0);
 }
 
-main > section ul li:nth-child(-n+3) {
-    opacity: 100%;
+.growing,
+main>section {
+    --width: 100%;
+    transform: rotate(0deg) translateY(-25%);
+}
+
+main>section div:first-of-type,
+main>section div:last-of-type {
+    width: 100%;
+    height: 50%;
+
+    position: absolute;
+    bottom: 0;
+
+    background-color: var(--cover-color);
+    box-shadow: var(--cover-box-shadow);
+}
+
+
+main>section>div:first-of-type {
+    background-color: var(--cover-color);
+    transform-style: preserve-3d;
+    transform-origin: 50% -.5%;
+    --a-duration: 2s;
     animation: flibing var(--a-duration) 1 linear forwards;
-    z-index: 1;
-    box-shadow: inset 0 0 1em rgb(88, 88, 88);
-
-    display: none;
 }
 
-main > section ul li:first-child {
+main>section ul {
+    width: 100%;
+    height: 50%;
+
+    list-style: none;
+
+    position: absolute;
+    bottom: 0;
+    transform-style: preserve-3d;
+
+    display: grid;
+    place-items: center;
+}
+
+
+main>section ul li {
+    width: 96%;
+    height: 97%;
+    position: absolute;
+    background-color: white;
+    background-image: url(../images/old-paper.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 200% 200%;
+    box-shadow: var(--paper-box-shadow);
+
+    transform-style: preserve-3d;
+    transform-origin: 50% 0%;
+    overflow: hidden;
+
+    padding: 3%;
+}
+
+main>section ul:first-of-type li {
+    transform-style: preserve-3d;
+    animation: flibing var(--a-duration) 1 linear forwards;
+}
+
+main>section ul:first-of-type li:first-child {
     --a-duration: 2.2s;
 }
 
-main > section ul li:nth-child(2) {
+main>section ul:first-of-type li:nth-child(2) {
     --a-duration: 2.6s;
 }
 
-main > section ul li:nth-child(3) {
+main>section ul:first-of-type li:nth-child(3) {
     --a-duration: 2.8s;
 }
 
-/* cover bron : http://clipart-library.com/clipart/689205.htm */
-main > section ul li:last-child {
-    width: 100%;
-    height: 100%;
 
-    background-color: rgb(172, 77, 0);
-
-    background-image: url(../images/book-cover.jpg);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    box-shadow: inset 0 0 .5em rgb(172, 77, 0);
-    border: none;
-
-    transform-origin: 50% 0%;
-
-    animation: flibing 2s 1 ease-out forwards;
-    opacity: 100%;
-
-    display: none;
-
-}
-
-@keyframes flibingw {
+@keyframes flibing {
     100% {
         transform: rotateX(180deg);
     }
 }
 
-main > section ul li:not(:nth-child(-n+3)):not(:last-child) {
-    padding: 0 3% 3% 3%;
-    background-image:
-        /* repeating-linear-gradient(
-        black 0% .1%,
-        transparent.1% 2%,
-        black 2% 2.1%
-    ), */
-        url(../images/old-paper.png);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size:
-        /* 95% , */
-        200% 200%;
-}
 
-main > section ul li:nth-child(5) h2 {
-    width: 100%;
-    height: fit-content;
-    font-family: var(--h2-font);
-    font-size: 2.5rem;
-    text-align: center;
-    border-bottom: solid 1px black;
-}
-
-main > section ul li:nth-child(5) section{
-    height: fit-content;
-    width: 100%;
-    margin-top: 3%;
-}
-
-main > section ul li:nth-child(5) section iframe {
-    width: 40%;
-    height: 20%;
-    float: left;
-    margin: 0 3% 3% 0;
-
-    overflow:auto;
-    background-color: red;
-    
-    filter: grayscale(100%) sepia(70%);
-}
-
-main > section ul li:nth-child(5) section:nth-of-type(2) iframe {
-    height: 20%;
-    aspect-ratio: 1/1;
-    margin: 0 0 3% 3%;
-    float: right;
-}
-
-main > section ul li:nth-child(5) section h3{
-    font-size: 1em;
-}
-
-main > section ul li:nth-child(5) section:first-of-type p {
-    font-size: .9em;
-}
-
-main > section ul li:nth-child(5)>button {
+main>section ul:nth-of-type(2) li>button {
     width: 10%;
     aspect-ratio: 1/1;
 
@@ -285,44 +226,115 @@ main > section ul li:nth-child(5)>button {
     animation: flippingcorner 1s infinite linear alternate both;
 }
 
-main > section ul li:nth-child(5)>button:hover {
-    width: 15%;
+main>section ul:nth-of-type(2) li>button:hover {
+    width: 35%;
 }
 
-main > section ul li:nth-child(5)>button:active {
+main>section ul:nth-of-type(2) li>button:active {
     width: 20%;
 }
 
-@keyframes flippingcorner{
-    from{
-        width: 10%;
+@keyframes flippingcorner {
+    from {
+        width: 7%;
     }
-    to{
-        width: 15%;
+
+    to {
+        width: 12%;
     }
 }
 
-main > section div{
-    width: 90%;
-    height: 3em;
-
-    background-color: red;
-
-    position: absolute;
-    bottom: -2.5em;
-    z-index: 2;
-
+main>section ul:nth-of-type(2) li {
     display: flex;
-    justify-content: space-between;
-    gap: 1%;
+    flex-direction: column;
 }
 
-main > section div a{
-    width: fit-content;
-    height: 100%;
-    background-color: yellow;
-    padding: 2%;
+main>section ul:nth-of-type(2) li section:first-of-type {
+    display: grid;
+    grid-template-columns: 40% 60%;
+    grid-template-rows: auto;
+    gap: 3%;
 
-    text-decoration: none;
+    margin-bottom: 3%;
+}
+
+main>section ul:nth-of-type(2) li h2 {
+    font-family: var(--h2-font);
+    font-size: 2.5em;
+    letter-spacing: .05em;
     text-align: center;
+    border-bottom: solid 2px black;
+    margin-bottom: 3%;
+}
+
+main>section ul:nth-of-type(2) li section:first-of-type div {
+    width: 100%;
+    height: 100%;
+
+    grid-area: 1/1/4/2;
+
+    position: relative;
+
+    overflow: hidden;
+    background-color: red;
+}
+
+main>section ul:nth-of-type(2) li section:first-of-type div img {
+    width: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: center;
+    filter: grayscale(100%) sepia(50%);
+
+}
+
+main>section ul:nth-of-type(2) li p {
+    font-family: var(--p-font);
+    margin-bottom: 3%;
+}
+
+main>section ul:nth-of-type(2) li section:first-of-type p {
+    grid-column: 2/3;
+}
+
+/* main>section ul:nth-of-type(2) li p:first-of-type::first-letter{
+    font-size: 2em;
+    font-weight: bolder;
+    line-height: .5em;
+    float: left;
+    color: var(--cover-color);
+} */
+
+main>section ul:nth-of-type(2) li a {
+    color: black;
+    text-decoration-color: var(--cover-color);
+    grid-column: 2/3;
+}
+
+main>section ul:nth-of-type(2) li section:nth-of-type(2) {
+    display: grid;
+    grid-template-columns: 15% 80%;
+    gap: 1.5%;
+
+    border-top: solid 1px black;
+}
+
+main>section ul:nth-of-type(2) li section:nth-of-type(2) h3 {
+    writing-mode: vertical-lr;
+    grid-area: 1/1/2/2;
+    font-family: var(--h3-font);
+    font-size: 3em;
+    font-weight: lighter;
+    padding-top: 5%;
+    text-align: center;
+    letter-spacing: .1em;
+}
+
+main>section ul:nth-of-type(2) li section:nth-of-type(2) p {
+    grid-column: 1/3;
+    margin: 0;
+}
+
+main>section ul:nth-of-type(2) li section:nth-of-type(2) p:first-of-type {
+    grid-column: 2/3;
 }

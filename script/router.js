@@ -38,31 +38,4 @@ export async function onRouteChanged(data) {
     })
 }
 
-const sdata = await fetchData(API_URL, API_KEY);
-
-
-
-        // '/:id': async function (id) {
-        //     console.log("id", id);
-
-        //     console.log("data", sdata);
-
-        //     const filteredData = sdata.artObjects.find(schilderij => schilderij.id === id);
-        //     // const allItemElements = document.querySelectorAll("main>section:first-of-type ul li");
-        //     // const allItemElementsArray = [...allItemElements]
-        //     //    const filteredItemElement =  allItemElementsArray.find(item => item.dataset.id === id)
-        //     console.log(filteredData);
-
-        //     details();
-        // }
-
-
-
-// function renderArticle(data) {
-//     document.querySelector('div')
-//     div.innerHTML = `
-//         <article>
-//             <h1>${data.title}</h1>
-//         </article>
-//     `
-// }
+// const data = await fetchData(API_URL);

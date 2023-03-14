@@ -1,6 +1,7 @@
 import { fetchData } from './modules/fetch.js';
 import { onRouteChanged } from './router.js';
-import { displayLoading } from './modules/display.js';
+import { mijndata } from './modules/data.js';
+// import { displayLoading } from './modules/display.js';
 
 let Alldata;                             // Declare a variable named "Alldata" to store fetched data.
 
@@ -9,7 +10,7 @@ window.addEventListener('hashchange', function () {
   onRouteChanged(Alldata);               // De functie onRouteChanged wordt aangeroepen en de Alldata wordt meegegeven
 }, false);
 
-displayLoading();
+// displayLoading();
 
 async function dataDisplay() {
   try {

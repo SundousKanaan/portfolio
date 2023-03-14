@@ -12,3 +12,5 @@ bron: flip corner
 
 krant
 https://i.pinimg.com/originals/7a/63/ba/7a63ba0af6ff26ee1506d5971b3addbe.jpg
+
+/* cover bron : http://clipart-library.com/clipart/689205.htm */
