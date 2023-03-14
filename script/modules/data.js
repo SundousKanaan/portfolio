@@ -7,7 +7,7 @@ export const ulData = document.querySelector('main > section ul:nth-of-type(2)')
 // titles labels
 export async function mijnRepos() {
     const data = await fetchreposData();
-    let mijnTitels = data.map(repo => repo.name);
+    const mijnTitels = data.map(repo => repo.name);
     console.log("mijnRepos data", data);
 
     const liElement = document.createElement('li');
@@ -60,11 +60,25 @@ export async function mijndata(API_URL) {
     `
 }
 
-// mijndata();
+export async function repodata(repoTitel) {
+    console.log(repoTitel);
+    const data = await fetchRepo(repoTitel);
+    console.log("data van", repoTitel, data);
 
+    ulData.innerHTML =
+        `
+        <li data-name="${data.name}">
+        <h2>${data.name} 2 </h2>
+        <p>${data.description}</p>
+        </li>
 
-// <li>
-// <h2>${data.name}</h2>
-// <img src="${data.avatar_url}" alt="Sundous Kanaan avatar foto">
-// <a href = "#repo/nextpaper" ></a>
-// </li> 
+        <li data-name="${data.name}">
+        <h2>${data.name}</h2>
+        <label ><input type="checkbox">Filter</label>
+        <iframe src="${data.homepage}" frameborder="0"  ></iframe>
+        <a href="#repo/nextpaper"></a>
+        </li>
+    `;
+}
+
+//scrolling-x="no"
