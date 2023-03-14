@@ -9,7 +9,7 @@
 
 :root {
     --h2-font: 'Smokum', cursive;
-    --h3-font:'Rubik Dirt', cursive;
+    --h3-font: 'Rubik Dirt', cursive;
     --p-font: 'EB Garamond', serif;
 
     --cover-color: rgb(172, 77, 0);
@@ -93,6 +93,24 @@ header>div iframe {
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ************** */
+/* main */
+/* ************** */
+
 main {
     width: 100%;
     height: 100%;
@@ -110,7 +128,7 @@ main>section {
     aspect-ratio: 1/3;
     list-style: none;
 
-    background-color: rgb(88, 41, 2);
+    /* background-color: rgb(88, 41, 2); */
     filter: drop-shadow(1em 1em 2em black);
 
     position: absolute;
@@ -120,13 +138,12 @@ main>section {
     transform: rotate(10deg) translateY(0);
 }
 
-.growing,
-main>section {
+main>section.growing {
     --width: 100%;
     transform: rotate(0deg) translateY(-25%);
 }
 
-main>section div:first-of-type,
+main>section>a,
 main>section div:last-of-type {
     width: 100%;
     height: 50%;
@@ -139,13 +156,56 @@ main>section div:last-of-type {
 }
 
 
-main>section>div:first-of-type {
+main>section>a:first-of-type {
     background-color: var(--cover-color);
+    z-index: 100;
+    background-image: url(../images/book-cover.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    cursor: pointer;
+
     transform-style: preserve-3d;
-    transform-origin: 50% -.5%;
+    transform-origin: 50% 0%;
+
+}
+
+main>section.growing>a:first-of-type {
     --a-duration: 2s;
     animation: flibing var(--a-duration) 1 linear forwards;
 }
+
+main>section>a:nth-of-type(2) {
+    width: 5em;
+    height: 2.5em;
+
+    z-index: 1000;
+    position: absolute;
+    right: 1%;
+    bottom: 50%;
+
+    background-color: transparent;
+    box-shadow: none;
+    background-image:
+        conic-gradient(at 20% 50%,
+            red 0% 60%,
+            transparent 60% 90%,
+            red 90%);
+
+    transform-origin: right;
+    transform: scaleX(0);
+    transition: 1s;
+}
+
+main>section.growing>a:nth-of-type(2) {
+    transform: scaleX(1);
+}
+
+main>section.growing>a:nth-of-type(2):hover {
+    transform: scaleX(1.5);
+}
+
 
 main>section ul {
     width: 100%;
@@ -155,14 +215,18 @@ main>section ul {
 
     position: absolute;
     bottom: 0;
+    z-index: 99;
     transform-style: preserve-3d;
 
     display: grid;
     place-items: center;
 }
 
+main>section.growing ul:not(:last-of-type) {
+    z-index: 101;
+}
 
-main>section ul li {
+main>section.growing ul li {
     width: 96%;
     height: 97%;
     position: absolute;
@@ -180,21 +244,25 @@ main>section ul li {
     padding: 3%;
 }
 
-main>section ul:first-of-type li {
+main>section.growing ul:first-of-type li {
     transform-style: preserve-3d;
     animation: flibing var(--a-duration) 1 linear forwards;
 }
 
-main>section ul:first-of-type li:first-child {
+main>section.growing ul:first-of-type li:first-child {
     --a-duration: 2.2s;
 }
 
-main>section ul:first-of-type li:nth-child(2) {
+main>section.growing ul:first-of-type li:nth-child(2) {
     --a-duration: 2.6s;
 }
 
-main>section ul:first-of-type li:nth-child(3) {
+main>section.growing ul:first-of-type li:nth-child(3) {
     --a-duration: 2.8s;
+}
+
+.flibpaper {
+    transform: rotateX(180deg);
 }
 
 
@@ -204,17 +272,21 @@ main>section ul:first-of-type li:nth-child(3) {
     }
 }
 
+main>section ul:nth-of-type(2) {
+    z-index: 3;
+}
 
-main>section ul:nth-of-type(2) li>button {
-    width: 10%;
+main>section ul:nth-of-type(2) li>button,
+main>section ul:nth-of-type(2) li:not(:first-child)>a:last-of-type {
+    width: 15%;
     aspect-ratio: 1/1;
 
     border: none;
     background-color: transparent;
     background-image: url(../images/flip-corner.png);
     background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
+    background-position: 100% 100%;
+    background-size: 50%;
 
     position: absolute;
     right: 0;
@@ -226,27 +298,34 @@ main>section ul:nth-of-type(2) li>button {
     animation: flippingcorner 1s infinite linear alternate both;
 }
 
-main>section ul:nth-of-type(2) li>button:hover {
-    width: 35%;
+main>section ul:nth-of-type(2) li:not(:first-child)>a:hover {
+    background-size: 100%;
 }
 
-main>section ul:nth-of-type(2) li>button:active {
-    width: 20%;
+main>section ul:nth-of-type(2) li:not(:first-child)>a:active {
+    width: 25%;
+    background-size: 100%;
 }
 
 @keyframes flippingcorner {
     from {
-        width: 7%;
+        background-size: 50%;
     }
 
     to {
-        width: 12%;
+        background-size: 100%;
     }
+}
+
+main>section ul:nth-of-type(2) {
+    overflow: hidden;
+    z-index: 88;
 }
 
 main>section ul:nth-of-type(2) li {
     display: flex;
     flex-direction: column;
+    box-shadow: 0 .5em .5em rgba(0, 0, 0, 0.555);
 }
 
 main>section ul:nth-of-type(2) li section:first-of-type {
@@ -276,7 +355,7 @@ main>section ul:nth-of-type(2) li section:first-of-type div {
     position: relative;
 
     overflow: hidden;
-    background-color: red;
+    background-color: var(--cover-color);
 }
 
 main>section ul:nth-of-type(2) li section:first-of-type div img {
@@ -285,7 +364,6 @@ main>section ul:nth-of-type(2) li section:first-of-type div img {
     object-fit: cover;
     object-position: center;
     filter: grayscale(100%) sepia(50%);
-
 }
 
 main>section ul:nth-of-type(2) li p {
@@ -296,14 +374,6 @@ main>section ul:nth-of-type(2) li p {
 main>section ul:nth-of-type(2) li section:first-of-type p {
     grid-column: 2/3;
 }
-
-/* main>section ul:nth-of-type(2) li p:first-of-type::first-letter{
-    font-size: 2em;
-    font-weight: bolder;
-    line-height: .5em;
-    float: left;
-    color: var(--cover-color);
-} */
 
 main>section ul:nth-of-type(2) li a {
     color: black;
@@ -337,4 +407,67 @@ main>section ul:nth-of-type(2) li section:nth-of-type(2) p {
 
 main>section ul:nth-of-type(2) li section:nth-of-type(2) p:first-of-type {
     grid-column: 2/3;
+}
+
+
+
+
+/* titles labels */
+
+main>section ul:last-of-type {
+    width: 100%;
+    height: 5em;
+    position: absolute;
+    /* bottom: -4em; */
+    bottom: -1em;
+
+    display: flex;
+    align-items: start;
+    flex-wrap: wrap;
+
+    padding: 0 2.5%;
+
+    display: none;
+}
+
+main>section.growing ul:last-of-type {
+    display: flex;
+}
+
+main>section ul:last-of-type li {
+    background-color: antiquewhite;
+    background-image: none;
+    width: 2.5em;
+    height: fit-content;
+    position: relative;
+    height: 10em;
+    margin-right: .3em;
+
+    z-index: 100;
+
+    display: flex;
+    align-items: end;
+
+    transform-origin: top;
+    padding: 0;
+
+    transition: .2s;
+}
+
+main>section ul:last-of-type li a {
+    text-decoration: none;
+    font-family: var(--p-font);
+    font-size: 1em;
+    color: black;
+    width: 100%;
+    height: 100%;
+    text-align: end;
+    padding: 0 25% 20% 25%;
+
+    writing-mode: vertical-lr;
+}
+
+main>section ul:last-of-type li.openpage,
+main>section ul:last-of-type li:hover {
+    transform: translateY(1.5em);
 }

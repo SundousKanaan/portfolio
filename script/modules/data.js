@@ -1,15 +1,45 @@
-import { fetchData , fetchRepo} from './fetch.js';
+import { fetchData, fetchreposData, fetchRepo } from './fetch.js';
 
-let ul = document.querySelector('main > section ul:nth-of-type(2)');
+const ulTitels = document.querySelector('main > section ul:last-of-type');
+const ulData = document.querySelector('main > section ul:nth-of-type(2)');
 
-console.log(ul);
 
-export async function mijndata(API_URL){
+// titles labels
+export async function mijnRepos() {
+    const data = await fetchreposData();
+    let mijnTitels = data.map(repo => repo.name);
+    console.log("mijnRepos data", data);
+
+    const liElement = document.createElement('li');
+    const title = document.createElement('a');
+
+    title.href = "#repo/over";
+    title.innerText = "over";
+    liElement.appendChild(title);
+    ulTitels.appendChild(liElement);
+
+    mijnTitels.forEach((repoTitle) => {
+        const liElement = document.createElement('li');
+        const title = document.createElement('a');
+
+        title.href = "#repo/" + repoTitle;
+        title.innerText = repoTitle;
+        liElement.appendChild(title);
+        ulTitels.appendChild(liElement);
+    });
+    console.log(ulTitels);
+}
+
+mijnRepos();
+
+
+// my papers data
+export async function mijndata(API_URL) {
     const data = await fetchData(API_URL);
-    console.log("mijn data" , data);
+    // console.log(data);
 
-    ul.innerHTML=
-    `
+    ulData.innerHTML =
+        `
     <li>
     <h2>${data.name}</h2>
     <section>
@@ -26,13 +56,15 @@ export async function mijndata(API_URL){
     <p>Ik ben een kunstliefhebber. Ik woon in Velsen-Noord en studeer aan de hoge-School van Amsterdam.</p>
     <p>Ik blijf mijn tekeningen steeds ontwikkelen, en hoop dat ze in de toekomst zó goed worden, dat ze een “merk” worden. Ik kijk veel Japanse series, die vind ik leuk en createf in verschillende opzichten, zoals de toekomstige programma's en innovatieve technische ideeën.</p>
     </section>
-    <button></button>
     </li>
     `
-
-
 }
 
-mijndata();
+// mijndata();
 
 
+// <li>
+// <h2>${data.name}</h2>
+// <img src="${data.avatar_url}" alt="Sundous Kanaan avatar foto">
+// <a href = "#repo/nextpaper" ></a>
+// </li> 

@@ -1,41 +1,29 @@
 import './modules/routie.js';
 import { fetchData } from './modules/fetch.js';
+import { mijndata } from './modules/data.js'
+
+const book = document.querySelector('main > section');
+const paper = document.querySelectorAll('main>section ul:nth-of-type(2) li:not(:first-child)');
+const nextButton = document.querySelectorAll('main>section ul:nth-of-type(2) li > a:last-of-type');
+const titelsLabels = document.querySelector('main>section ul:last-of-type li:first-of-type')
 
 export async function onRouteChanged(data) {
     routie({
-        'object/open_image': function (){
-            article.classList.add('openimg');
+        'repo/': function () {
+            book.classList.remove('growing');
         }
         ,
-        'object/details_page': function (){
-            article.classList.remove('openimg');
+        'repo/book': async function () {
+            book.classList.add('growing');
         }
         ,
-        'object/zoekbalk': function (){
-            header.style.display='none';
+        'repo/over': function () {
+            mijndata();
         }
         ,
-        'object/zoeken_page': function (){
-            article.innerHTML='';
-            article.style.display = "none";
-            main.style.padding='2em 1em 0 1em';
-
-            mainElementen.forEach(mainElement =>{
-                mainElement.style.display ='';
-            })
-        }
-        ,
-        'object/:objectNumber': async function (objectNumber) {
-            var item_details = get_details(objectNumber);
-            console.log("item_details", item_details);
-            header.style.display='none';
-            main.style.padding='0 1em 0 1em';
-
-            mainElementen.forEach(mainElement =>{
-                mainElement.style.display ='none';
-            })
+        'repo/nextpaper': function () {
+            // paper.target.classList.add('flibpaper');
+            console.log("next paper");
         }
     })
 }
-
-// const data = await fetchData(API_URL);
