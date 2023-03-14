@@ -1,0 +1,328 @@
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    caret-color: transparent;
+}
+
+:root {
+    --h2-font: 'Smokum', cursive;
+    --text-font: 'EB Garamond', serif;
+}
+
+/* images bron https://www.pngwing.com/en/free-png-xxmck */
+
+/* bron img: https://img.freepik.com/free-photo/vintage-desk-concept_23-2147791064.jpg?w=1380&t=st=1678711885~exp=1678712485~hmac=91d12ef14bda45f164d0b06e5e1b4706a414e4698ba5acbba06b642d2017a4eb */
+body {
+    width: 100vw;
+    height: 100dvh;
+    height: 100vh;
+
+    background-image: url(../images/old-desk.avif);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    position: relative;
+    overflow: hidden;
+}
+
+header {
+    width: 100%;
+    height: 20%;
+    height: fit-content;
+    display: grid;
+    place-items: center;
+
+    display: none;
+}
+
+header h1 {
+    width: 50%;
+    height: 100%;
+    text-align: center;
+
+    background-image: url(../images/old-paper.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 99% 99%;
+}
+
+header>div {
+    width: 20em;
+    height: 30em;
+
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    position: relative;
+}
+
+header>div div {
+    width: 90%;
+    height: 70%;
+
+    position: absolute;
+    z-index: 0;
+
+    overflow: hidden;
+
+    background-image: url(https://media.tenor.com/T90erSIZ41sAAAAM/harry-potter-cute.gif);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+header>div iframe {
+    width: 100%;
+    height: 100%;
+    background-image: url(../images/old-cader.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    position: absolute;
+    z-index: 1;
+}
+
+
+main {
+    width: 100%;
+    height: 100%;
+
+    display: grid;
+    place-items: center;
+
+    perspective: 50em;
+    transform-style: preserve-3d;
+}
+
+main > section{
+    --width: 50%;
+    width: var(--width);
+    aspect-ratio: 1/1.5;
+
+    transform-style: preserve-3d;
+    transform: rotate(10deg);
+
+    filter: drop-shadow(1em 1em 2em black);
+
+    position: relative;
+    
+    display: flex;
+    justify-content: center;
+}
+
+main > section ul {
+    --width: 100%;
+    width: var(--width);
+    aspect-ratio: 1/1.5;
+    list-style: none;
+
+    background-color: rgb(172, 77, 0);
+    box-shadow:
+        inset 0 0 2em rgb(58, 57, 57);
+        /* 1em 1em 2em black; */
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: relative;
+
+    transform-style: preserve-3d;
+    transition: 2.5s;
+}
+
+.growing,
+main > section {
+    --width: 100%;
+    transform: rotate(0deg);
+}
+
+main > section ul li {
+    width: 96%;
+    height: 97%;
+
+    position: absolute;
+
+    background-color: white;
+    transform-style: preserve-3d;
+    transform-origin: 50% -1%;
+    transform: rotateX(0);
+
+    overflow: hidden;
+}
+
+main > section ul li:nth-child(-n+3) {
+    opacity: 100%;
+    animation: flibing var(--a-duration) 1 linear forwards;
+    z-index: 1;
+    box-shadow: inset 0 0 1em rgb(88, 88, 88);
+
+    display: none;
+}
+
+main > section ul li:first-child {
+    --a-duration: 2.2s;
+}
+
+main > section ul li:nth-child(2) {
+    --a-duration: 2.6s;
+}
+
+main > section ul li:nth-child(3) {
+    --a-duration: 2.8s;
+}
+
+/* cover bron : http://clipart-library.com/clipart/689205.htm */
+main > section ul li:last-child {
+    width: 100%;
+    height: 100%;
+
+    background-color: rgb(172, 77, 0);
+
+    background-image: url(../images/book-cover.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    box-shadow: inset 0 0 .5em rgb(172, 77, 0);
+    border: none;
+
+    transform-origin: 50% 0%;
+
+    animation: flibing 2s 1 ease-out forwards;
+    opacity: 100%;
+
+    display: none;
+
+}
+
+@keyframes flibingw {
+    100% {
+        transform: rotateX(180deg);
+    }
+}
+
+main > section ul li:not(:nth-child(-n+3)):not(:last-child) {
+    padding: 0 3% 3% 3%;
+    background-image:
+        /* repeating-linear-gradient(
+        black 0% .1%,
+        transparent.1% 2%,
+        black 2% 2.1%
+    ), */
+        url(../images/old-paper.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size:
+        /* 95% , */
+        200% 200%;
+}
+
+main > section ul li:nth-child(5) h2 {
+    width: 100%;
+    height: fit-content;
+    font-family: var(--h2-font);
+    font-size: 2.5rem;
+    text-align: center;
+    border-bottom: solid 1px black;
+}
+
+main > section ul li:nth-child(5) section{
+    height: fit-content;
+    width: 100%;
+    margin-top: 3%;
+}
+
+main > section ul li:nth-child(5) section iframe {
+    width: 40%;
+    height: 20%;
+    float: left;
+    margin: 0 3% 3% 0;
+
+    overflow:auto;
+    background-color: red;
+    
+    filter: grayscale(100%) sepia(70%);
+}
+
+main > section ul li:nth-child(5) section:nth-of-type(2) iframe {
+    height: 20%;
+    aspect-ratio: 1/1;
+    margin: 0 0 3% 3%;
+    float: right;
+}
+
+main > section ul li:nth-child(5) section h3{
+    font-size: 1em;
+}
+
+main > section ul li:nth-child(5) section:first-of-type p {
+    font-size: .9em;
+}
+
+main > section ul li:nth-child(5)>button {
+    width: 10%;
+    aspect-ratio: 1/1;
+
+    border: none;
+    background-color: transparent;
+    background-image: url(../images/flip-corner.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+
+    position: absolute;
+    right: 0;
+    bottom: 0;
+
+    transition: 1s;
+    cursor: pointer;
+
+    animation: flippingcorner 1s infinite linear alternate both;
+}
+
+main > section ul li:nth-child(5)>button:hover {
+    width: 15%;
+}
+
+main > section ul li:nth-child(5)>button:active {
+    width: 20%;
+}
+
+@keyframes flippingcorner{
+    from{
+        width: 10%;
+    }
+    to{
+        width: 15%;
+    }
+}
+
+main > section div{
+    width: 90%;
+    height: 3em;
+
+    background-color: red;
+
+    position: absolute;
+    bottom: -2.5em;
+    z-index: 2;
+
+    display: flex;
+    justify-content: space-between;
+    gap: 1%;
+}
+
+main > section div a{
+    width: fit-content;
+    height: 100%;
+    background-color: yellow;
+    padding: 2%;
+
+    text-decoration: none;
+    text-align: center;
+}
