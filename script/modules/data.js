@@ -1,7 +1,7 @@
 import { fetchData, fetchreposData, fetchRepo } from './fetch.js';
 
 const ulTitels = document.querySelector('main > section ul:last-of-type');
-const ulData = document.querySelector('main > section ul:nth-of-type(2)');
+export const ulData = document.querySelector('main > section ul:nth-of-type(2)');
 
 
 // titles labels

@@ -1,6 +1,6 @@
 import './modules/routie.js';
 import { fetchData } from './modules/fetch.js';
-import { mijndata } from './modules/data.js'
+import { ulData,mijndata } from './modules/data.js'
 
 const book = document.querySelector('main > section');
 const paper = document.querySelectorAll('main>section ul:nth-of-type(2) li:not(:first-child)');
@@ -11,6 +11,9 @@ export async function onRouteChanged(data) {
     routie({
         'repo/': function () {
             book.classList.remove('growing');
+            ulData.innerHTML=`
+            <li> klick op "over" </li>
+            `;
         }
         ,
         'repo/book': async function () {
