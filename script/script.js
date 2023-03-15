@@ -7,7 +7,7 @@ let Alldata;                             // Declare a variable named "Alldata" t
 
 // Eventlisteners
 window.addEventListener('hashchange', function () {
-  onRouteChanged(Alldata);               // De functie onRouteChanged wordt aangeroepen en de Alldata wordt meegegeven
+  onRouteChanged(Alldata);           // De functie onRouteChanged wordt aangeroepen en de Alldata wordt meegegeven
 }, false);
 
 // displayLoading();

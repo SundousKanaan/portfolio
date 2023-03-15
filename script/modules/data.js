@@ -61,24 +61,76 @@ export async function mijndata(API_URL) {
 }
 
 export async function repodata(repoTitel) {
-    console.log(repoTitel);
     const data = await fetchRepo(repoTitel);
-    console.log("data van", repoTitel, data);
 
-    ulData.innerHTML =
+    ulData.innerHTML = "";
+    let pageNummber = 1;
+    const li1Element = document.createElement('li');
+    const li2Element = document.createElement('li');
+    const li3Element = document.createElement('li');
+
+    const wiki = `https://github.com/SundousKanaan/${repoTitel}/wiki`;
+
+    if (data.has_wiki == true) {
+        console.log(data.has_wiki);
+        const li4Element = document.createElement('li');
+
+        li4Element.innerHTML = 
         `
-        <li data-name="${data.name}">
-        <h2>${data.name} 2 </h2>
-        <p>${data.description}</p>
-        </li>
+        <h2>${data.name} ${pageNummber + 3} </h2>
+        <iframe src="${wiki}" frameborder="0" ></iframe>
+        <a href="#repo/previospaper" data-action="previospaper"></a>
+        <div data-value="papernummber">${pageNummber + 3}</div>
+        `;
 
-        <li data-name="${data.name}">
+        ulData.appendChild(li4Element);
+    } else {
+        console.log(" no wiki ")
+    }
+
+    console.log(wiki);
+
+    li1Element.innerHTML =
+        `
         <h2>${data.name}</h2>
+
         <label ><input type="checkbox">Filter</label>
-        <iframe src="${data.homepage}" frameborder="0"  ></iframe>
-        <a href="#repo/nextpaper"></a>
-        </li>
+
+        <iframe src="${data.homepage}" frameborder="0" ></iframe>
+        
+        <a href="#repo/nextpaper" data-action="nextpaper"></a>
+        <div data-value="papernummber">${pageNummber}</div>
     `;
+
+    li2Element.innerHTML = 
+    `
+    <h2>${data.name} ${pageNummber + 1} </h2>
+    <p>${data.description}</p>
+    <a href="#repo/nextpaper" data-action="nextpaper"></a>
+    <a href="#repo/previospaper" data-action="previospaper"></a>
+    <div data-value="papernummber">${pageNummber + 1}</div>
+    `;
+
+    li3Element.innerHTML = 
+    `
+    <h2>${data.name} ${pageNummber + 2} </h2>
+    <p>${data.description}</p>
+    <a href="#repo/nextpaper" data-action="nextpaper"></a>
+    <a href="#repo/previospaper" data-action="previospaper"></a>
+    <div data-value="papernummber">${pageNummber + 2}</div>
+    `;
+
+    ulData.appendChild(li3Element);
+    ulData.appendChild(li2Element);
+    ulData.appendChild(li1Element);
+
+    const ulDataChilderen = document.querySelectorAll('main > section ul:nth-of-type(2) li');
+
+    for(let i = 0 ; i < ulDataChilderen.length ; i++){
+        ulDataChilderen[i].dataset.name = `${data.name}`;
+    }
+
+
 }
 
 //scrolling-x="no"
