@@ -1,6 +1,5 @@
 import './modules/routie.js';
-import { fetchData } from './modules/fetch.js';
-import { ulData, mijndata, repodata } from './modules/data.js'
+import { ulElement, mijndata, repodata } from './modules/data.js'
 
 const book = document.querySelector('main > section');
 const paper = document.querySelectorAll('main>section ul:nth-of-type(2) li:not(:first-child)');
@@ -10,7 +9,7 @@ export async function onRouteChanged(data) {
     routie({
         'repo/': function () {
             book.classList.remove('growing');
-            ulData.innerHTML = `
+            ulElement.innerHTML = `
             <li> klick op "over" </li>
             `;
         }
@@ -43,9 +42,9 @@ export async function onRouteChanged(data) {
             }
         }
         ,
-        'repo/:repoTitel': function (repoTitel) {
-            repodata(repoTitel);
-            console.log("kkk");
+        'repo/:repoTitel': async function (repoTitel) {
+            const repoData = await repodata(repoTitel);
+            console.log("repoData", repoData);
         }
     })
 }

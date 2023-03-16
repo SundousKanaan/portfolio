@@ -1,7 +1,9 @@
-import { fetchData, fetchreposData, fetchRepo } from './fetch.js';
+import { fetchData, fetchreposData, fetchRepo, fetchRepoContents } from './fetch.js';
+import { getrepoData} from './repodata.js'
 
 const ulTitels = document.querySelector('main > section ul:last-of-type');
-export const ulData = document.querySelector('main > section ul:nth-of-type(2)');
+export const ulElement = document.querySelector('main > section ul:nth-of-type(2)');
+
 
 
 // titles labels
@@ -27,10 +29,13 @@ export async function mijnRepos() {
         liElement.appendChild(title);
         ulTitels.appendChild(liElement);
     });
-    console.log(ulTitels);
 }
 
 mijnRepos();
+
+
+
+
 
 
 // my papers data
@@ -38,7 +43,7 @@ export async function mijndata(API_URL) {
     const data = await fetchData(API_URL);
     // console.log(data);
 
-    ulData.innerHTML =
+    ulElement.innerHTML =
         `
     <li>
     <h2>${data.name}</h2>
@@ -56,81 +61,67 @@ export async function mijndata(API_URL) {
     <p>Ik ben een kunstliefhebber. Ik woon in Velsen-Noord en studeer aan de hoge-School van Amsterdam.</p>
     <p>Ik blijf mijn tekeningen steeds ontwikkelen, en hoop dat ze in de toekomst zó goed worden, dat ze een “merk” worden. Ik kijk veel Japanse series, die vind ik leuk en createf in verschillende opzichten, zoals de toekomstige programma's en innovatieve technische ideeën.</p>
     </section>
-    </li>
+    </li> 
     `
 }
+
+
+
+
+
+
+
 
 export async function repodata(repoTitel) {
     const data = await fetchRepo(repoTitel);
 
-    ulData.innerHTML = "";
-    let pageNummber = 1;
-    const li1Element = document.createElement('li');
-    const li2Element = document.createElement('li');
-    const li3Element = document.createElement('li');
+    const reposdata = await fetchreposData();
+    const reposTitels = reposdata.map(item => item.name);
+    // console.log(reposTitels);
 
-    const wiki = `https://github.com/SundousKanaan/${repoTitel}/wiki`;
+    const path = "";
+    const repoContents = await fetchRepoContents(repoTitel, path);
+    const reposPaths = repoContents.map(item => item.path);
+    const array = [...new Set(reposPaths)]
+    // console.log("teeeest" , reposPaths);
 
-    if (data.has_wiki == true) {
-        console.log(data.has_wiki);
-        const li4Element = document.createElement('li');
+    ulElement.innerHTML = "";
 
-        li4Element.innerHTML = 
-        `
-        <h2>${data.name} ${pageNummber + 3} </h2>
-        <iframe src="${wiki}" frameborder="0" ></iframe>
-        <a href="#repo/previospaper" data-action="previospaper"></a>
-        <div data-value="papernummber">${pageNummber + 3}</div>
-        `;
+        // Maak een array voor de li-elementen
+        const liElements = [];
 
-        ulData.appendChild(li4Element);
-    } else {
+    if (array.includes("README.md")) {
+        // console.log("test" , reposPaths);
+
+        // const path = "Documentatie.md";
+        const li3Element = document.createElement('li');
+
+        li3Element.innertext="hi";
+        return li3Element;
+    }
+    else {
         console.log(" no wiki ")
     }
 
-    console.log(wiki);
+    liElements.push(li3Element);
 
-    li1Element.innerHTML =
-        `
-        <h2>${data.name}</h2>
+    const [lis] = await getrepoData(data);
 
-        <label ><input type="checkbox">Filter</label>
+    liElements.push(lis);
 
-        <iframe src="${data.homepage}" frameborder="0" ></iframe>
-        
-        <a href="#repo/nextpaper" data-action="nextpaper"></a>
-        <div data-value="papernummber">${pageNummber}</div>
-    `;
-
-    li2Element.innerHTML = 
-    `
-    <h2>${data.name} ${pageNummber + 1} </h2>
-    <p>${data.description}</p>
-    <a href="#repo/nextpaper" data-action="nextpaper"></a>
-    <a href="#repo/previospaper" data-action="previospaper"></a>
-    <div data-value="papernummber">${pageNummber + 1}</div>
-    `;
-
-    li3Element.innerHTML = 
-    `
-    <h2>${data.name} ${pageNummber + 2} </h2>
-    <p>${data.description}</p>
-    <a href="#repo/nextpaper" data-action="nextpaper"></a>
-    <a href="#repo/previospaper" data-action="previospaper"></a>
-    <div data-value="papernummber">${pageNummber + 2}</div>
-    `;
-
-    ulData.appendChild(li3Element);
-    ulData.appendChild(li2Element);
-    ulData.appendChild(li1Element);
-
-    const ulDataChilderen = document.querySelectorAll('main > section ul:nth-of-type(2) li');
-
-    for(let i = 0 ; i < ulDataChilderen.length ; i++){
-        ulDataChilderen[i].dataset.name = `${data.name}`;
-    }
-
-
+    console.log(liElements);
+    return liElements;
 }
 
+// repodata("Rijksmuseum");
+
 //scrolling-x="no"
+
+        // li3Element.innerHTML = 
+        //     `
+        //     <h2>${data.name} ${pageNummber + 3} </h2>
+        //     <h3>${pathe}</h3>
+        //     <code>${pathContent}</code>
+        //     <a href="#repo/previospaper" data-action="previospaper"></a>
+        //     <div data-value="papernummber">${pageNummber + 3}</div>
+        //     `;
