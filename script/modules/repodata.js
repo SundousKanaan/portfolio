@@ -23,6 +23,7 @@ export function getrepoData(data, documentatie){
     <h2>${data.name} ${pageNummber + 1} </h2>
     <p>${data.description}</p>
     <h3>Documentatie: </h3>
+    <p>Het grootste programmeertalen bestand: ${data.language}</p>
     <code>${documentatie}</code>
     <a href="#repo/previospaper" data-action="previospaper"></a>
     <div data-value="papernummber">${pageNummber + 1}</div>
