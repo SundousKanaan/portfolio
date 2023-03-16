@@ -6,11 +6,10 @@ export const ulElement = document.querySelector('main > section ul:nth-of-type(2
 
 
 
-// titles labels
+// get titles labels
 export async function mijnRepos() {
     const data = await fetchreposData();
     const mijnTitels = data.map(repo => repo.name);
-    // console.log("mijnRepos data", data);
 
     const liElement = document.createElement('li');
     const title = document.createElement('a');
@@ -38,10 +37,10 @@ mijnRepos();
 
 
 
-// my papers data
+// get my data
+
 export async function mijndata(API_URL) {
     const data = await fetchData(API_URL);
-    // console.log(data);
 
     ulElement.innerHTML =
         `
@@ -67,6 +66,7 @@ export async function mijndata(API_URL) {
 
 
 
+// get repo data
 export async function repodata(repoTitel) {
     const data = await fetchRepo(repoTitel);
     const path = "";
@@ -76,16 +76,24 @@ export async function repodata(repoTitel) {
     let ulVull = "";
 
     if (repoContents.some(content => content.path === "Documentatie.md")) {
+        console.log("yes documentatie");
+
         const path = "Documentatie.md";
         const repoContents = await fetchRepoContents(repoTitel, path);
-        documentatie = decodeURIComponent(atob(repoContents.content));
-        console.log("documentatie");
+        const documentContent = repoContents.content;
+        documentatie = decodeURIComponent(atob(documentContent));
+        console.log(documentatie);
         ulVull = getrepoData(data, documentatie);
+
+        ulElement.innerHTML=ulVull;
 
     } else {
         documentatie = "Er is geen documentatie toegevoegd voor deze repo.";
         console.log(documentatie);
         ulVull = getrepoData(data, documentatie);
+        ulElement.innerHTML=ulVull;
     }
     return ulElement;
 }
+
+repodata("Radarpanel");
