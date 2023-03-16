@@ -407,8 +407,12 @@ main>section>a:first-of-type {
 
 main>section.growing>a:first-of-type {
     --a-duration: 2s;
-    animation: flibing var(--a-duration) 1 linear forwards;
+    animation: flibing var(--a-duration) 1.5s 1 linear forwards;
 }
+
+
+/* back knop */
+/* ********* */
 
 main>section>a:nth-of-type(2) {
     width: 5em;
@@ -423,9 +427,9 @@ main>section>a:nth-of-type(2) {
     box-shadow: none;
     background-image:
         conic-gradient(at 20% 50%,
-            red 0% 60%,
+            var(--cover-color) 0% 60%,
             transparent 60% 90%,
-            red 90%);
+            var(--cover-color) 90%);
 
     transform-origin: right;
     transform: scaleX(0);
@@ -433,11 +437,22 @@ main>section>a:nth-of-type(2) {
 }
 
 main>section.growing>a:nth-of-type(2) {
-    transform: scaleX(1);
+    /* transform: scaleX(1); */
+    animation: openBookmark 1s 1.5s 1 linear both ;
 }
 
 main>section.growing>a:nth-of-type(2):hover {
     transform: scaleX(1.5);
+}
+
+@keyframes openBookmark{
+    from{
+        transform: scaleX(0);
+    }
+    to{
+        transform: scaleX(1);
+    }
+
 }
 
 
