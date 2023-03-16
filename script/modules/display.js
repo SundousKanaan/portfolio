@@ -1,34 +1,42 @@
-// var body = document.body;
+import { ulElement } from './data.js';
+const loadingscherm = document.querySelector('body>div')
 
-// export async function displayLoading() {
+export async function displayLoading() {
 
-//   variables.loadingscherm.classList.add("display");
-//   body.classList.add("hidden");
+    loadingscherm.classList.add("onloading");
 
-//   // to stop loading after some time
-//   setTimeout(() => {
-//     variables.loadingscherm.classList.remove("display");
-//     body.classList.remove("hidden");
-//   }, 5000);
+    // to stop loading after some time
+    setTimeout(() => {
+        loadingscherm.classList.remove("onloading");
+    }, 5000);
 
-// }
+}
 
-// export function searchLoading() {
+export function pageLoading() {
+    ulElement.innerHTML = "";
+    ulElement.innerHTML = `
+    <li data-state="repoloading">
+    <div>
+        <span>
+            <span>
+                <span></span>
+                <span></span>
+            </span>
+        </span>
+    </div>
+    </li>
+    `;
+}
 
-//   variables.h2.innerHTML = '';
-//   variables.ul.innerHTML = '';
-
-//   variables.ul.style.display = "flex";
-
-//   variables.ul.innerHTML = `
-//   <li class="geenResulteten">
-//     <div class="loading">
-//       <span></span>
-//       <span></span>
-//       <span></span>
-//     </div>
-//   </li>`
-// }
+export function errorLoading() {
+    ulElement.innerHTML = "";
+    ulElement.innerHTML = `
+    <li data-state="error">
+    <img src="./images/Platform9.png" alt="Platform 9 3/4 symbol">
+    <p>Je platform is gesloten, probeer het later nog een keer.</p>
+    </li>
+    `;
+}
 
 // export function errorscreen() {
 //   const errorscreen =`
@@ -40,5 +48,7 @@
 //   `;
 //   return errorscreen;
 // }
+
+
 
 
