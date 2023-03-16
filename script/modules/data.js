@@ -85,10 +85,11 @@ export async function repodata(repoTitel) {
         ulVull = getrepoData(data, documentatie);
     } else {
         documentatie = "Er is geen documentatie toegevoegd voor deze repo.";
+        console.log(documentatie);
         ulVull = getrepoData(data, documentatie);
     }
 
     return ulElement;
 }
 
-repodata("Rijksmuseum");
+// repodata("Rijksmuseum");
