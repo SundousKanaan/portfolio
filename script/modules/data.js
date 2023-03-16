@@ -2,7 +2,7 @@ import { fetchData, fetchreposData, fetchRepo, fetchRepoContents } from './fetch
 import { getrepoData } from './repodata.js'
 
 const ulTitels = document.querySelector('main > section ul:last-of-type');
-export const ulElement = document.querySelector('main > section ul:nth-of-type(2)');
+export let ulElement = document.querySelector('main > section ul:nth-of-type(2)');
 
 
 
@@ -82,18 +82,13 @@ export async function repodata(repoTitel) {
         const repoContents = await fetchRepoContents(repoTitel, path);
         const documentContent = repoContents.content;
         documentatie = decodeURIComponent(atob(documentContent));
-        console.log(documentatie);
         ulVull = getrepoData(data, documentatie);
-
-        ulElement.innerHTML=ulVull;
-
     } else {
         documentatie = "Er is geen documentatie toegevoegd voor deze repo.";
-        console.log(documentatie);
         ulVull = getrepoData(data, documentatie);
-        ulElement.innerHTML=ulVull;
     }
+
     return ulElement;
 }
 
-repodata("Radarpanel");
+repodata("Rijksmuseum");

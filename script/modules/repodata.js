@@ -1,7 +1,7 @@
 import { ulElement } from './data.js';
 
 
-export async function getrepoData(data, documentatie){
+export function getrepoData(data, documentatie){
     
     ulElement.innerHTML="";
 
@@ -16,7 +16,7 @@ export async function getrepoData(data, documentatie){
     <iframe src="${data.homepage}" frameborder="0" ></iframe>
     <a href="#repo/nextpaper" data-action="nextpaper"></a>
     <div data-value="papernummber">${pageNummber}</div>
-`;
+    `;
 
     li2Element.innerHTML =
         `
@@ -36,6 +36,6 @@ export async function getrepoData(data, documentatie){
         ulDataChilderen[i].dataset.repo = `${data.name}`;
     }
 
-    // console.log(ulElement);
+    console.log(ulElement);
     return ulElement;
 }
