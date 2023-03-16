@@ -17,6 +17,7 @@
     --cover-color: rgb(172, 77, 0);
     --cover-box-shadow: inset 0 0 2em rgb(58, 57, 57);
     --paper-box-shadow: inset 0 0 1em rgb(141, 63, 0);
+    --papers-shadow: 1em 0 3em rgb(58, 57, 57);
 }
 
 /* images bron https://www.pngwing.com/en/free-png-xxmck */
@@ -34,8 +35,6 @@ body {
 
     position: relative;
     overflow: hidden;
-
-    /* cursor: url('./images/magicstick.png'),wait; */
 }
 
 header {
@@ -233,7 +232,7 @@ main>section.growing ul:not(:last-of-type) {
     z-index: 101;
 }
 
-main>section.growing ul li {
+main>section.growing > ul > li {
     width: 96%;
     height: 97%;
     position: absolute;
@@ -251,20 +250,20 @@ main>section.growing ul li {
     padding: 3%;
 }
 
-main>section.growing ul:first-of-type li {
+main>section.growing ul:first-of-type >li {
     transform-style: preserve-3d;
     animation: flibing var(--a-duration) 1 linear forwards;
 }
 
-main>section.growing ul:first-of-type li:first-child {
+main>section.growing ul:first-of-type >li:first-child {
     --a-duration: 2.2s;
 }
 
-main>section.growing ul:first-of-type li:nth-child(2) {
+main>section.growing ul:first-of-type > li:nth-child(2) {
     --a-duration: 2.6s;
 }
 
-main>section.growing ul:first-of-type li:nth-child(3) {
+main>section.growing ul:first-of-type >li:nth-child(3) {
     --a-duration: 2.8s;
 }
 
@@ -275,18 +274,25 @@ main>section.growing ul:first-of-type li:nth-child(3) {
     }
 }
 
-main>section ul:nth-of-type(2) {
-    z-index: 3;
-}
 
 
 
 
+
+
+
+
+
+
+
+
+/* ********** */
+/* repo over */
+/* ********** */
 
 
 main>section ul:nth-of-type(2) {
     overflow: hidden;
-    z-index: 88;
 }
 
 main>section ul:nth-of-type(2) li {
@@ -424,6 +430,10 @@ main>section ul:nth-of-type(2) li section:nth-of-type(2) p:first-of-type {
 
 
 
+
+
+
+
 /* ************* */
 /* titles labels */
 /* ************* */
@@ -441,6 +451,8 @@ main>section ul:last-of-type {
     padding: 0 2.5%;
 
     transition: 4s;
+
+
 }
 
 main>section.growing ul:last-of-type {
@@ -474,14 +486,14 @@ main>section ul:last-of-type li a {
     font-size: 1em;
     color: black;
     width: 100%;
-    height: 100%;
+    height: 60%;
     text-align: end;
     padding: 0 15% 20% 15%;
 
     writing-mode: vertical-lr;
 }
 
-main>section ul:last-of-type li.openpage,
+main>section ul:last-of-type li.openlabel,
 main>section ul:last-of-type li:hover {
     transform: translateY(1.5em);
 }
@@ -492,19 +504,52 @@ main>section ul:last-of-type li:hover {
 /* ul with repo data */
 /* ***************** */
 
-main>section ul:nth-of-type(2) li[data-name] iframe {
+main>section ul:nth-of-type(2) li[data-repo]{
+    display: flex;
+    flex-direction: column;
+
+    box-shadow: 
+    var(--paper-box-shadow);
+        /* var(--papers-shadow); */
+    transform-style: preserve-3d;
+    transform-origin: 50% 0%;
+    transform: rotateX(0deg);
+    transition: 2s;
+
+    z-index: 120;
+    overflow: hidden;
+}
+
+main>section ul:nth-of-type(2) li[data-repo].flibpaper {
+    transform: rotateX(180deg);
+}
+
+main>section ul:nth-of-type(2) li[data-repo] > h3{
+    font-family: var(--h3-font);
+    font-weight: lighter;
+    font-size: clamp(1em, 7vw, 2.5em);
+}
+
+main>section ul:nth-of-type(2) li[data-repo] > p:first-of-type{
+    padding-bottom: 3%;
+    border-bottom: solid 1px black;
+
+    font-size: clamp(.8em, 3vw, 2em);
+}
+
+main>section ul:nth-of-type(2) li[data-repo] > iframe {
     width: 100%;
     height: 80%;
     filter: var(--foto-filter);
 }
 
-main>section ul:nth-of-type(2) li[data-name]:has(input:checked) img,
-main>section ul:nth-of-type(2) li[data-name]:has(input:checked) iframe {
+main>section ul:nth-of-type(2) li[data-repo]:has(input:checked) img,
+main>section ul:nth-of-type(2) li[data-repo]:has(input:checked) iframe {
     filter: none;
 }
 
 
-main>section ul:nth-of-type(2) li[data-name] a {
+main>section ul:nth-of-type(2) li[data-repo] > a {
     width: 15%;
     aspect-ratio: 1/1;
 
@@ -516,43 +561,44 @@ main>section ul:nth-of-type(2) li[data-name] a {
 
     position: absolute;
     bottom: 0;
+  
 
     transition: 1s;
     cursor: pointer;
 
-    animation: flippingcorner 1s infinite linear alternate both;
+    animation: flippingcorner 2s infinite linear alternate both;
 }
 
-main>section ul:nth-of-type(2) li[data-name] a[data-action="nextpaper"] {
+main>section ul:nth-of-type(2) li[data-repo] > a[data-action="nextpaper"] {
     right: 0;
 }
 
-main>section ul:nth-of-type(2) li[data-name] a[data-action="previospaper"] {
+main>section ul:nth-of-type(2) li[data-repo] > a[data-action="previospaper"] {
     left: 0;
     transform: rotate(90deg);
 }
 
-main>section ul:nth-of-type(2) li[data-name] a[data-action="nextpaper"]:hover {
+main>section ul:nth-of-type(2) li[data-repo] > a[data-action="nextpaper"]:hover {
     background-size: 70%;
     animation: none;
 }
 
-main>section ul:nth-of-type(2) li[data-name] a[data-action="nextpaper"]:active {
+main>section ul:nth-of-type(2) li[data-repo] > a[data-action="nextpaper"]:active {
     width: 20%;
     background-size: 100%;
 }
 
 @keyframes flippingcorner {
     from {
-        background-size: 50%;
+        background-size: 20%;
     }
 
     to {
-        background-size: 100%;
+        background-size: 80%;
     }
 }
 
-main>section ul:nth-of-type(2) li[data-name] label {
+main>section ul:nth-of-type(2) li[data-repo] > label {
     /* width: 20%; */
     width: fit-content;
     height: fit-content;
@@ -564,24 +610,20 @@ main>section ul:nth-of-type(2) li[data-name] label {
     font-size: clamp(.8em, 3vw, 2em);
 }
 
-main>section ul:nth-of-type(2) li[data-name] label input {
+main>section ul:nth-of-type(2) li[data-repo] > label input {
     margin-right: .5em;
 }
 
-main>section ul:nth-of-type(2) li[data-name]:has(input:checked) label {
+main>section ul:nth-of-type(2) li[data-repo]:has(input:checked) label {
     text-decoration: line-through;
 }
 
-main>section ul:nth-of-type(2) li[data-name] {
+main>section ul:nth-of-type(2) li[data-repo] > {
     transform: rotateX(0deg);
     transition: 2s;
 }
 
-main>section ul:nth-of-type(2) li[data-name].flibpaper {
-    transform: rotateX(180deg);
-}
-
-main>section ul:nth-of-type(2) li[data-name] div[data-value="papernummber"]{
+main>section ul:nth-of-type(2) li[data-repo] > div[data-value="papernummber"]{
     width: 10%;
     height: fit-content;
 
@@ -593,4 +635,32 @@ main>section ul:nth-of-type(2) li[data-name] div[data-value="papernummber"]{
     position: absolute;
     left: calc(50% - 10%/2);
     bottom: 0;
+}
+
+
+main>section ul:nth-of-type(2) li[data-repo] > code{
+    width: 100%;
+    height: 70%;
+    overflow-x:hidden;
+    padding: 3%;
+
+    font-size: clamp(.5em, 3vw, 1.5em);
+}
+
+main>section ul:nth-of-type(2) li[data-repo] > code img{
+    width: 100%;
+}
+
+main>section ul:nth-of-type(2) li[data-repo] > code::-webkit-scrollbar {
+    width: 2vw;
+}
+
+main>section ul:nth-of-type(2) li[data-repo] > code::-webkit-scrollbar-track {
+    background-color: transparent;
+
+}
+
+main>section ul:nth-of-type(2) li[data-repo] > code::-webkit-scrollbar-thumb {
+    background-color: var(--cover-color);
+    border-radius: 5em;
 }

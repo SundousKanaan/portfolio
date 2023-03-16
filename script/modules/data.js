@@ -1,5 +1,5 @@
 import { fetchData, fetchreposData, fetchRepo, fetchRepoContents } from './fetch.js';
-import { getrepoData} from './repodata.js'
+import { getrepoData } from './repodata.js'
 
 const ulTitels = document.querySelector('main > section ul:last-of-type');
 export const ulElement = document.querySelector('main > section ul:nth-of-type(2)');
@@ -10,7 +10,7 @@ export const ulElement = document.querySelector('main > section ul:nth-of-type(2
 export async function mijnRepos() {
     const data = await fetchreposData();
     const mijnTitels = data.map(repo => repo.name);
-    console.log("mijnRepos data", data);
+    // console.log("mijnRepos data", data);
 
     const liElement = document.createElement('li');
     const title = document.createElement('a');
@@ -67,61 +67,25 @@ export async function mijndata(API_URL) {
 
 
 
-
-
-
-
-
 export async function repodata(repoTitel) {
     const data = await fetchRepo(repoTitel);
-
-    const reposdata = await fetchreposData();
-    const reposTitels = reposdata.map(item => item.name);
-    // console.log(reposTitels);
-
     const path = "";
     const repoContents = await fetchRepoContents(repoTitel, path);
-    const reposPaths = repoContents.map(item => item.path);
-    const array = [...new Set(reposPaths)]
-    // console.log("teeeest" , reposPaths);
 
-    ulElement.innerHTML = "";
+    let documentatie = "";
+    let ulVull = "";
 
-        // Maak een array voor de li-elementen
-        const liElements = [];
+    if (repoContents.some(content => content.path === "Documentatie.md")) {
+        const path = "Documentatie.md";
+        const repoContents = await fetchRepoContents(repoTitel, path);
+        documentatie = decodeURIComponent(atob(repoContents.content));
+        console.log("documentatie");
+        ulVull = getrepoData(data, documentatie);
 
-    if (array.includes("README.md")) {
-        // console.log("test" , reposPaths);
-
-        // const path = "Documentatie.md";
-        const li3Element = document.createElement('li');
-
-        li3Element.innertext="hi";
-        return li3Element;
+    } else {
+        documentatie = "Er is geen documentatie toegevoegd voor deze repo.";
+        console.log(documentatie);
+        ulVull = getrepoData(data, documentatie);
     }
-    else {
-        console.log(" no wiki ")
-    }
-
-    liElements.push(li3Element);
-
-    const [lis] = await getrepoData(data);
-
-    liElements.push(lis);
-
-    console.log(liElements);
-    return liElements;
+    return ulElement;
 }
-
-// repodata("Rijksmuseum");
-
-//scrolling-x="no"
-
-        // li3Element.innerHTML = 
-        //     `
-        //     <h2>${data.name} ${pageNummber + 3} </h2>
-        //     <h3>${pathe}</h3>
-        //     <code>${pathContent}</code>
-        //     <a href="#repo/previospaper" data-action="previospaper"></a>
-        //     <div data-value="papernummber">${pageNummber + 3}</div>
-        //     `;

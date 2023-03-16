@@ -42,7 +42,7 @@ export async function fetchRepo(repoTitel) {
 
 export async function fetchRepoContents(repoTitel,path) {
     const API_URL= `https://api.github.com/repos/SundousKanaan/${repoTitel}/contents/${path}`;
-    // console.log(API_URL);
+    console.log(API_URL);
     try {
       const response = await fetch(API_URL);
       const data = await response.json();
