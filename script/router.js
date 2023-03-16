@@ -6,14 +6,17 @@ const book = document.querySelector('main > section');
 export async function onRouteChanged(data) {
     routie({
         'repo/': function () {
-            book.classList.remove('growing');
-            ulElement.innerHTML = `
-            <li> klick op "over" </li>
-            `;
+            book.classList.add('bookclosed');
+            book.classList.remove('bookopening');
+
+            // ulElement.innerHTML = `
+            // <li> klick op "over" </li>
+            // `;
         }
         ,
         'repo/book': function () {
-            book.classList.add('growing');
+            book.classList.remove('bookclosed');
+            book.classList.add('bookopening');
         }
         ,
         'repo/over': function () {

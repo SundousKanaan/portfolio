@@ -11,6 +11,7 @@
     --h2-font: 'Smokum', cursive;
     --h3-font: 'Rubik Dirt', cursive;
     --p-font: 'EB Garamond', serif;
+    --HP-font:'Harry Potter', sans-serif;
 
     --foto-filter: grayscale(100%) sepia(50%);
 
@@ -100,7 +101,7 @@ body>div {
 
 
 .onloading span p {
-    font-family: 'Harry Potter', sans-serif;
+    font-family: var(--HP-font);
     font-size: clamp(2em, 6vw, 7em);
     text-transform: uppercase;
     position: absolute;
@@ -359,18 +360,16 @@ main>section {
     aspect-ratio: 1/3;
     list-style: none;
 
-    /* background-color: rgb(88, 41, 2); */
     filter: drop-shadow(1em 1em 2em black);
 
     position: absolute;
     transform-style: preserve-3d;
+    perspective: 50em;
     transition: 2.5s;
     transform: rotate(10deg) translateY(-20%);
-
-    /* opacity: 0; */
 }
 
-main>section.growing {
+main>section.bookopening {
     --width: 90%;
     transform: rotate(0deg) translateY(-28%);
 }
@@ -392,7 +391,7 @@ main>section>div:last-of-type {
 
 main>section>a:first-of-type {
     background-color: var(--cover-color);
-    z-index: 100;
+    z-index: 1000000;
     background-image: url(../images/book-cover.jpg);
     background-position: center;
     background-size: cover;
@@ -401,18 +400,52 @@ main>section>a:first-of-type {
     cursor: pointer;
 
     transform-style: preserve-3d;
+    perspective: 50em;
     transform-origin: 50% 0%;
-
+    
+    display: grid;
+    place-items: center;
+    text-decoration: none;
+    color: var(--cover-color);
+    font-family: var(--HP-font);
+    font-size: 4.5vw;
+    text-transform: uppercase;
 }
 
-main>section.growing>a:first-of-type {
+main>section.bookopening>a:first-of-type {
     --a-duration: 2s;
-    animation: flibing var(--a-duration) 1.5s 1 linear forwards;
+    animation: flibingcover var(--a-duration) 1.2s 1 linear both;
 }
 
 
-/* back knop */
-/* ********* */
+@keyframes flibingcover {
+    0%{
+        transform: rotateX(0deg);
+    }
+    100%{
+        z-index: -1000000; 
+        transform: rotateX(180deg);
+    }
+}
+
+main>section.bookclosed>a:first-of-type {
+    --a-duration: 2s;
+    animation: closecover var(--a-duration) .45s 1 linear both;
+}
+
+@keyframes closecover {
+    0%{
+        z-index: -1000000; 
+        transform: rotateX(180deg);
+    }
+    100%{
+        transform: rotateX(0deg);
+    }
+}
+
+
+/* book marker */
+/* *********** */
 
 main>section>a:nth-of-type(2) {
     width: 5em;
@@ -436,21 +469,26 @@ main>section>a:nth-of-type(2) {
     transition: 1s;
 }
 
-main>section.growing>a:nth-of-type(2) {
-    /* transform: scaleX(1); */
-    animation: openBookmark 1s 1.5s 1 linear both ;
+main>section.bookopening>a:nth-of-type(2) {
+    animation: openBookmark 1s 4s 1 linear both ;
 }
 
-main>section.growing>a:nth-of-type(2):hover {
+main>section.bookopening>a:nth-of-type(2):hover {
     transform: scaleX(1.5);
 }
 
 @keyframes openBookmark{
-    from{
-        transform: scaleX(0);
+    0%{
+        right: 2%;
+        transform: scaleX(0) rotateY(.5turn);
     }
-    to{
-        transform: scaleX(1);
+    50%{
+        transform: scaleX(1) rotateY(.5turn);
+    }
+    100%{
+        right: 1%;
+        z-index: 1000000000;
+        transform: scaleX(1) rotateY(0turn);
     }
 
 }
@@ -471,11 +509,11 @@ main>section ul {
     place-items: center;
 }
 
-main>section.growing ul:not(:last-of-type) {
+main>section.bookopening ul:not(:last-of-type) {
     z-index: 101;
 }
 
-main>section.growing>ul>li {
+main>section>ul>li {
     width: 96%;
     height: 97%;
     position: absolute;
@@ -493,27 +531,59 @@ main>section.growing>ul>li {
     padding: 3%;
 }
 
-main>section.growing ul:first-of-type>li {
+main>section.bookopening ul:first-of-type>li {
     transform-style: preserve-3d;
-    animation: flibing var(--a-duration) 1 linear forwards;
+    animation: flibing var(--a-duration) 1.5s 1 linear forwards;
 }
 
-main>section.growing ul:first-of-type>li:first-child {
+
+main>section.bookopening ul:first-of-type>li:nth-child(2) {
     --a-duration: 2.2s;
 }
 
-main>section.growing ul:first-of-type>li:nth-child(2) {
+main>section.bookopening ul:first-of-type>li:nth-child(3) {
     --a-duration: 2.6s;
 }
 
-main>section.growing ul:first-of-type>li:nth-child(3) {
+main>section.bookopening ul:first-of-type>li:last-child {
     --a-duration: 2.8s;
 }
-
 
 @keyframes flibing {
     100% {
         transform: rotateX(180deg);
+    }
+}
+
+
+main>section.bookclosed ul:not(:last-of-type) {
+    z-index: 101;
+}
+
+main>section.bookclosed ul:first-of-type>li {
+    transform-style: preserve-3d;
+    animation: bookclosed var(--a-duration) .5s 1 linear forwards;
+}
+
+main>section.bookclosed ul:first-of-type>li:nth-child(2) {
+    --a-duration: 1.8s;
+}
+
+main>section.bookclosed ul:first-of-type>li:nth-child(3) {
+    --a-duration: 1.6s;
+}
+
+main>section.bookclosed ul:first-of-type>li:last-child {
+    --a-duration: 1.2s;
+}
+
+@keyframes bookclosed {
+    0%{
+        
+        transform: rotateX(180deg);
+    }
+    100% {
+        transform: rotateX(0deg);
     }
 }
 
@@ -545,16 +615,16 @@ main>section ul:nth-of-type(2) li {
     box-shadow: 0 .5em .5em rgba(0, 0, 0, 0.555);
 }
 
-main>section.growing ul:nth-of-type(2) li::-webkit-scrollbar {
+main>section.bookopening ul:nth-of-type(2) li::-webkit-scrollbar {
     width: 2vw;
 }
 
-main>section.growing ul:nth-of-type(2) li::-webkit-scrollbar-track {
+main>section.bookopening ul:nth-of-type(2) li::-webkit-scrollbar-track {
     background-color: transparent;
 
 }
 
-main>section.growing ul:nth-of-type(2) li::-webkit-scrollbar-thumb {
+main>section.bookopening ul:nth-of-type(2) li::-webkit-scrollbar-thumb {
     background-color: var(--cover-color);
     border-radius: 5em;
 }
@@ -564,7 +634,7 @@ main>section ul:nth-of-type(2) li h2 {
 }
 
 main>section ul:nth-of-type(2) li h3 {
-    font-size: clamp(2em, 10vw, 7vw);
+    font-size: clamp(2em, 5vw, 7vw);
 }
 
 main>section ul:nth-of-type(2) li p {
@@ -698,8 +768,13 @@ main>section ul:last-of-type {
 
 }
 
-main>section.growing ul:last-of-type {
+main>section.bookclosed ul:last-of-type{
+    opacity: 0;
+}
+
+main>section.bookopening ul:last-of-type {
     bottom: -1em;
+    opacity: 100%;
 }
 
 main>section ul:last-of-type li {
@@ -906,4 +981,102 @@ main>section ul:nth-of-type(2) li[data-repo]>code::-webkit-scrollbar-track {
 main>section ul:nth-of-type(2) li[data-repo]>code::-webkit-scrollbar-thumb {
     background-color: var(--cover-color);
     border-radius: 5em;
+}
+
+
+
+
+
+
+
+
+
+@media (min-width: 590px) {
+    main>section {
+        --width: 30%;
+    }
+
+    main>section.bookopening {
+        --width: 40%;
+    }
+
+    main>section>a:first-of-type {
+        font-size: 2.5vw;
+    }
+
+
+    li[data-state="repoloading"] div {
+        width: 20vw;
+        left: calc(50% - 20vw/2) ;
+    }
+
+
+    main>section ul:nth-of-type(2) li[data-repo]>label {
+        font-size: clamp(.8em, 1.8vw, 2em);
+    }
+
+
+    main>section ul:nth-of-type(2) li p {
+    font-size: clamp(.8em, 2vw, 4em);
+    }
+
+    main>section ul:nth-of-type(2) li[data-repo]>p:first-of-type{
+        font-size: clamp(.8em, 1.5vw, 2em);
+    }
+
+    main>section ul:nth-of-type(2) li[data-repo]>h3 {
+        font-size: clamp(1em, 2vw, 2.5em);
+    }
+
+    main>section ul:nth-of-type(2) li[data-repo]>code::-webkit-scrollbar,
+    main>section.bookopening ul:nth-of-type(2) li::-webkit-scrollbar {
+        width: 1vw;
+    }
+
+    main>section ul:nth-of-type(2) li[data-repo]>code{
+        font-size: clamp(.5em, 1.5vw, 1.5em);
+    }
+}
+
+@media (min-width: 1100px) {
+    main>section {
+        --width: 15%;
+    }
+
+    main>section.bookopening {
+        --width: 27%;
+    }
+
+
+    li[data-state="repoloading"] div {
+        width: 15vw;
+        left: calc(50% - 15vw/2) ;
+    }
+
+
+    main>section ul:nth-of-type(2) li[data-repo]>label {
+        font-size: clamp(.8em, 1vw, 2em);
+    }
+
+    main>section ul:nth-of-type(2) li p {
+        font-size: clamp(.8em, 1.2vw, 2em);
+    }
+
+
+    main>section ul:nth-of-type(2) li h3 {
+        font-size: clamp(.8em, 3.5vw, 2em);
+    }
+
+    main>section ul:nth-of-type(2) li[data-repo]>p:first-of-type{
+        font-size: clamp(.8em, 1vw, 2em);
+    }
+
+    main>section ul:nth-of-type(2) li[data-repo]>code::-webkit-scrollbar,
+    main>section.bookopening ul:nth-of-type(2) li::-webkit-scrollbar {
+        width: .5vw;
+    }
+
+    main>section ul:nth-of-type(2) li[data-repo]>code{
+        font-size: clamp(.5em, 1vw, 1.5em);
+    }
 }
