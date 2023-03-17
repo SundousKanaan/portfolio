@@ -46,7 +46,7 @@ body {
 
 /* loading screens */
 
-body>div {
+body > div {
     display: none;
 }
 
@@ -136,10 +136,10 @@ li[data-state="repoloading"] div {
 }
 
 
-li[data-state="repoloading"]>div>span::before,
-li[data-state="repoloading"]>div>span::after,
-li[data-state="repoloading"]>div>span>span::before,
-li[data-state="repoloading"]>div>span>span::after {
+li[data-state="repoloading"] > div > span::before,
+li[data-state="repoloading"] > div > span::after,
+li[data-state="repoloading"] > div > span > span::before,
+li[data-state="repoloading"] > div > span > span::after {
     content: "";
     display: block;
     width: 4%;
@@ -151,19 +151,19 @@ li[data-state="repoloading"]>div>span>span::after {
     top: calc(50% - 5%/2);
 }
 
-li[data-state="repoloading"]>div>span::before {
+li[data-state="repoloading"] > div > span::before {
     left: -8%;
 }
 
-li[data-state="repoloading"]>div>span::after {
+li[data-state="repoloading"] > div > span::after {
     right: -8%;
 }
 
-li[data-state="repoloading"]>div>span>span::before {
+li[data-state="repoloading"] > div > span > span::before {
     top: -8%;
 }
 
-li[data-state="repoloading"]>div>span>span::after {
+li[data-state="repoloading"] > div > span > span::after {
     top: auto;
     bottom: -8%;
 }
@@ -171,7 +171,7 @@ li[data-state="repoloading"]>div>span>span::after {
 
 
 
-li[data-state="repoloading"]>div>span {
+li[data-state="repoloading"] > div > span {
     width: 95%;
     aspect-ratio: 1/1;
     display: block;
@@ -198,7 +198,7 @@ li[data-state="repoloading"]>div>span {
     }
 }
 
-li[data-state="repoloading"]>div>span>span {
+li[data-state="repoloading"] > div > span > span {
     width: 95%;
     aspect-ratio: 1/1;
     display: block;
@@ -230,7 +230,7 @@ li[data-state="repoloading"]>div>span>span {
     }
 }
 
-li[data-state="repoloading"]>div>span>span span {
+li[data-state="repoloading"] > div > span > span span {
     width: 45%;
     aspect-ratio: 1/1;
     display: block;
@@ -241,7 +241,7 @@ li[data-state="repoloading"]>div>span>span span {
     transform: rotate(-45deg);
 }
 
-li[data-state="repoloading"]>div>span>span span:nth-of-type(2) {
+li[data-state="repoloading"] > div > span > span span:nth-of-type(2) {
     transform: rotate(135deg);
 }
 
@@ -263,7 +263,7 @@ li[data-state="error"] p {
 
 /* zero state */
 
-body>span{
+body > span {
     width: 100vw;
     height: 100vh;
     display: block;
@@ -278,11 +278,11 @@ body>span{
     position: relative;
 }
 
-body>span.skip{
+body > span.skip {
     display: none;
 }
 
-body>span button{
+body > span button {
     -webkit-appearance: none;
     appearance: none;
 
@@ -299,8 +299,8 @@ body>span button{
     color: var(--cover-color);
 
     position: absolute;
-    bottom: 10vh;
-    right: calc(50% - 4em/2);
+    bottom: 6vh;
+    right: 10%;
 
     border: solid 1vw var(--cover-color);
     background-color: rgba(255, 255, 255, 0.432);
@@ -311,14 +311,14 @@ body>span button{
     transform-origin: center;
 }
 
-body>span button:focus,
-body>span button:hover{
+body > span button:focus,
+body > span button:hover {
     color: var(--loading-background);
     background-color: var(--cover-color);
     border-color: transparent;
 }
 
-body>span button:active{
+body > span button:active {
     transform: scale(.5);
 }
 
@@ -350,7 +350,7 @@ header h1 {
     background-size: 99% 99%;
 }
 
-header>div {
+header > div {
     width: 20em;
     height: 30em;
 
@@ -360,7 +360,7 @@ header>div {
     position: relative;
 }
 
-header>div div {
+header > div div {
     width: 90%;
     height: 70%;
 
@@ -375,7 +375,7 @@ header>div div {
     background-size: cover;
 }
 
-header>div iframe {
+header > div iframe {
     width: 100%;
     height: 100%;
     background-image: url(../images/old-cader.png);
@@ -417,7 +417,7 @@ main {
     transform-style: preserve-3d;
 }
 
-main>section {
+main > section {
     --width: 50%;
     width: var(--width);
     aspect-ratio: 1/3;
@@ -432,13 +432,13 @@ main>section {
     transform: rotate(10deg) translateY(-20%);
 }
 
-main>section.bookopening {
+main > section.bookopening {
     --width: 90%;
     transform: rotate(0deg) translateY(-28%);
 }
 
-main>section>a,
-main>section>div:last-of-type {
+main > section > a,
+main > section > div:last-of-type {
     width: 100%;
     height: 50%;
 
@@ -452,7 +452,7 @@ main>section>div:last-of-type {
 
 /* book cover */
 
-main>section>a:first-of-type {
+main > section > a:first-of-type {
     background-color: var(--cover-color);
     z-index: 1000000;
     background-image: url(../images/book-cover.jpg);
@@ -475,7 +475,7 @@ main>section>a:first-of-type {
     text-transform: uppercase;
 }
 
-main>section.bookopening>a:first-of-type {
+main > section.bookopening > a:first-of-type {
     --a-duration: 2s;
     animation: flibingcover var(--a-duration) 1.2s 1 linear both;
 }
@@ -492,7 +492,7 @@ main>section.bookopening>a:first-of-type {
     }
 }
 
-main>section.bookclosed>a:first-of-type {
+main > section.bookclosed > a:first-of-type {
     --a-duration: 2s;
     animation: closecover var(--a-duration) .45s 1 linear both;
 }
@@ -512,7 +512,7 @@ main>section.bookclosed>a:first-of-type {
 /* book marker */
 /* *********** */
 
-main>section>a:nth-of-type(2) {
+main > section > a:nth-of-type(2) {
     width: 5em;
     height: 2.5em;
 
@@ -534,11 +534,11 @@ main>section>a:nth-of-type(2) {
     transition: 1s;
 }
 
-main>section.bookopening>a:nth-of-type(2) {
+main > section.bookopening > a:nth-of-type(2) {
     animation: openBookmark 1s 4s 1 linear both;
 }
 
-main>section.bookopening>a:nth-of-type(2):hover {
+main > section.bookopening > a:nth-of-type(2):hover {
     transform: scaleX(1.5);
 }
 
@@ -561,7 +561,7 @@ main>section.bookopening>a:nth-of-type(2):hover {
 }
 
 
-main>section ul {
+main > section ul {
     width: 100%;
     height: 50%;
 
@@ -576,11 +576,11 @@ main>section ul {
     place-items: center;
 }
 
-main>section.bookopening ul:not(:last-of-type) {
+main > section.bookopening ul:not(:last-of-type) {
     z-index: 101;
 }
 
-main>section>ul>li {
+main > section > ul > li {
     width: 96%;
     height: 97%;
     position: absolute;
@@ -598,24 +598,24 @@ main>section>ul>li {
     padding: 3%;
 }
 
-main>section.bookopening ul:first-of-type>li {
+main > section.bookopening ul:first-of-type > li {
     transform-style: preserve-3d;
     animation: flibing var(--a-duration) 1.5s 1 linear forwards;
 }
 
-main>section.bookopening ul:first-of-type>li:first-child {
+main > section.bookopening ul:first-of-type > li:first-child {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
 }
 
-main>section.bookopening ul:first-of-type>li:first-child p {
+main > section.bookopening ul:first-of-type > li:first-child p {
     width: 100%;
     text-align: center;
 }
 
-main>section.bookopening ul:first-of-type>li:first-child div {
+main > section.bookopening ul:first-of-type > li:first-child div {
     width: 80%;
     height: 80%;
     background-image: url(../images/old-cader.png);
@@ -627,7 +627,7 @@ main>section.bookopening ul:first-of-type>li:first-child div {
     place-items: center;
 }
 
-main>section.bookopening ul:first-of-type>li:first-child div span {
+main > section.bookopening ul:first-of-type > li:first-child div span {
     display: block;
     width: 85%;
     height: 75%;
@@ -642,15 +642,15 @@ main>section.bookopening ul:first-of-type>li:first-child div span {
     filter: var(--foto-filter);
 }
 
-main>section.bookopening ul:first-of-type>li:nth-child(2) {
+main > section.bookopening ul:first-of-type > li:nth-child(2) {
     --a-duration: 2.2s;
 }
 
-main>section.bookopening ul:first-of-type>li:nth-child(3) {
+main > section.bookopening ul:first-of-type > li:nth-child(3) {
     --a-duration: 2.6s;
 }
 
-main>section.bookopening ul:first-of-type>li:last-child {
+main > section.bookopening ul:first-of-type > li:last-child {
     --a-duration: 2.8s;
 }
 
@@ -661,24 +661,24 @@ main>section.bookopening ul:first-of-type>li:last-child {
 }
 
 
-main>section.bookclosed ul:not(:last-of-type) {
+main > section.bookclosed ul:not(:last-of-type) {
     z-index: 101;
 }
 
-main>section.bookclosed ul:first-of-type>li {
+main > section.bookclosed ul:first-of-type > li {
     transform-style: preserve-3d;
     animation: bookclosed var(--a-duration) .5s 1 linear forwards;
 }
 
-main>section.bookclosed ul:first-of-type>li:nth-child(2) {
+main > section.bookclosed ul:first-of-type > li:nth-child(2) {
     --a-duration: 1.8s;
 }
 
-main>section.bookclosed ul:first-of-type>li:nth-child(3) {
+main > section.bookclosed ul:first-of-type > li:nth-child(3) {
     --a-duration: 1.6s;
 }
 
-main>section.bookclosed ul:first-of-type>li:last-child {
+main > section.bookclosed ul:first-of-type > li:last-child {
     --a-duration: 1.2s;
 }
 
@@ -710,22 +710,22 @@ main>section.bookclosed ul:first-of-type>li:last-child {
 /* ********** */
 
 
-main>section ul:nth-of-type(2) {
+main > section ul:nth-of-type(2) {
     overflow: hidden;
 }
 
-main>section ul:nth-of-type(2) li {
+main > section ul:nth-of-type(2) li {
     display: flex;
     flex-direction: column;
     overflow-y: auto;
     box-shadow: 0 .5em .5em rgba(0, 0, 0, 0.555);
 }
 
-main>section.bookopening ul:nth-of-type(2) {
+main > section.bookopening ul:nth-of-type(2) {
     animation: pages 1s 3s 1 linear both;
 }
 
-main>section.bookclosed ul:nth-of-type(2) {
+main > section.bookclosed ul:nth-of-type(2) {
     animation: nopages 1s -.5s 1 linear both;
 }
 
@@ -749,28 +749,28 @@ main>section.bookclosed ul:nth-of-type(2) {
     }
 }
 
-main>section.bookopening ul:nth-of-type(2) li::-webkit-scrollbar {
+main > section.bookopening ul:nth-of-type(2) li::-webkit-scrollbar {
     width: 2vw;
 }
 
-main>section.bookopening ul:nth-of-type(2) li::-webkit-scrollbar-track {
+main > section.bookopening ul:nth-of-type(2) li::-webkit-scrollbar-track {
     background-color: transparent;
 }
 
-main>section.bookopening ul:nth-of-type(2) li::-webkit-scrollbar-thumb {
+main > section.bookopening ul:nth-of-type(2) li::-webkit-scrollbar-thumb {
     background-color: var(--cover-color);
     border-radius: 5em;
 }
 
-main>section ul:nth-of-type(2) li h2 {
+main > section ul:nth-of-type(2) li h2 {
     font-size: clamp(1.5em, 7vw, 2.5em);
 }
 
-main>section ul:nth-of-type(2) li h3 {
+main > section ul:nth-of-type(2) li h3 {
     font-size: clamp(2em, 5vw, 7vw);
 }
 
-main>section ul:nth-of-type(2) li p {
+main > section ul:nth-of-type(2) li p {
     font-size: clamp(.8em, 3vw, 2em);
 }
 
@@ -781,7 +781,7 @@ main>section ul:nth-of-type(2) li p {
 /* page 1 section 1 */
 /* **************** */
 
-main>section ul:nth-of-type(2) li section:first-of-type {
+main > section ul:nth-of-type(2) li section:first-of-type {
     display: grid;
     grid-template-columns: 40% 60%;
     grid-template-rows: auto;
@@ -791,7 +791,7 @@ main>section ul:nth-of-type(2) li section:first-of-type {
     padding-bottom: 3%;
 }
 
-main>section ul:nth-of-type(2) li h2 {
+main > section ul:nth-of-type(2) li h2 {
     font-family: var(--h2-font);
     letter-spacing: .05em;
     text-align: center;
@@ -799,7 +799,7 @@ main>section ul:nth-of-type(2) li h2 {
     margin-bottom: 3%;
 }
 
-main>section ul:nth-of-type(2) li section:first-of-type div {
+main > section ul:nth-of-type(2) li section:first-of-type div {
     width: 100%;
     height: 100%;
 
@@ -811,7 +811,7 @@ main>section ul:nth-of-type(2) li section:first-of-type div {
     background-color: var(--cover-color);
 }
 
-main>section ul:nth-of-type(2) li section:first-of-type div img {
+main > section ul:nth-of-type(2) li section:first-of-type div img {
     width: 100%;
     height: 100%;
     display: block;
@@ -821,20 +821,20 @@ main>section ul:nth-of-type(2) li section:first-of-type div img {
     transition: .5s;
 }
 
-main>section ul:nth-of-type(2) li section:first-of-type div img:hover {
+main > section ul:nth-of-type(2) li section:first-of-type div img:hover {
     filter: none;
 }
 
-main>section ul:nth-of-type(2) li p {
+main > section ul:nth-of-type(2) li p {
     font-family: var(--p-font);
     margin-bottom: 3%;
 }
 
-main>section ul:nth-of-type(2) li section:first-of-type p {
+main > section ul:nth-of-type(2) li section:first-of-type p {
     grid-column: 2/3;
 }
 
-main>section ul:nth-of-type(2) li a {
+main > section ul:nth-of-type(2) li a {
     color: black;
     text-decoration-color: var(--cover-color);
     grid-column: 2/3;
@@ -848,7 +848,7 @@ main>section ul:nth-of-type(2) li a {
 /* page 1 section 2 */
 /* **************** */
 
-main>section ul:nth-of-type(2) li section:nth-of-type(2) {
+main > section ul:nth-of-type(2) li section:nth-of-type(2) {
     display: grid;
     grid-template-columns: 15% 80%;
     gap: 1.5%;
@@ -856,7 +856,7 @@ main>section ul:nth-of-type(2) li section:nth-of-type(2) {
     border-top: solid 1px black;
 }
 
-main>section ul:nth-of-type(2) li section:nth-of-type(2) h3 {
+main > section ul:nth-of-type(2) li section:nth-of-type(2) h3 {
     writing-mode: vertical-lr;
     grid-area: 1/1/2/2;
     font-family: var(--h3-font);
@@ -866,12 +866,12 @@ main>section ul:nth-of-type(2) li section:nth-of-type(2) h3 {
     letter-spacing: .1em;
 }
 
-main>section ul:nth-of-type(2) li section:nth-of-type(2) p {
+main > section ul:nth-of-type(2) li section:nth-of-type(2) p {
     grid-column: 1/3;
     margin: 0;
 }
 
-main>section ul:nth-of-type(2) li section:nth-of-type(2) p:first-of-type {
+main > section ul:nth-of-type(2) li section:nth-of-type(2) p:first-of-type {
     grid-column: 2/3;
 }
 
@@ -889,7 +889,7 @@ main>section ul:nth-of-type(2) li section:nth-of-type(2) p:first-of-type {
 /* titles labels */
 /* ************* */
 
-main>section ul:last-of-type {
+main > section ul:last-of-type {
     width: 100%;
     height: 5em;
     position: absolute;
@@ -904,16 +904,16 @@ main>section ul:last-of-type {
     transition: 4s;
 }
 
-main>section.bookclosed ul:last-of-type {
+main > section.bookclosed ul:last-of-type {
     opacity: 0;
 }
 
-main>section.bookopening ul:last-of-type {
+main > section.bookopening ul:last-of-type {
     bottom: -1em;
     opacity: 100%;
 }
 
-main>section ul:last-of-type li {
+main > section ul:last-of-type li {
     background-color: antiquewhite;
     background-image: none;
 
@@ -934,7 +934,7 @@ main>section ul:last-of-type li {
     transition: .2s;
 }
 
-main>section ul:last-of-type li a {
+main > section ul:last-of-type li a {
     text-decoration: none;
     font-family: var(--p-font);
     font-size: 1em;
@@ -947,8 +947,8 @@ main>section ul:last-of-type li a {
     writing-mode: vertical-lr;
 }
 
-main>section ul:last-of-type li.openlabel,
-main>section ul:last-of-type li:hover {
+main > section ul:last-of-type li.openlabel,
+main > section ul:last-of-type li:hover {
     transform: translateY(1.5em);
 }
 
@@ -958,7 +958,7 @@ main>section ul:last-of-type li:hover {
 /* ul with repo data */
 /* ***************** */
 
-main>section ul:nth-of-type(2) li[data-repo] {
+main > section ul:nth-of-type(2) li[data-repo] {
     display: flex;
     flex-direction: column;
 
@@ -974,36 +974,36 @@ main>section ul:nth-of-type(2) li[data-repo] {
     overflow: hidden;
 }
 
-main>section ul:nth-of-type(2) li[data-repo].flibpaper {
+main > section ul:nth-of-type(2) li[data-repo].flibpaper {
     transform: rotateX(180deg);
 }
 
-main>section ul:nth-of-type(2) li[data-repo]>h3 {
+main > section ul:nth-of-type(2) li[data-repo] > h3 {
     font-family: var(--h3-font);
     font-weight: lighter;
     font-size: clamp(1em, 7vw, 2.5em);
 }
 
-main>section ul:nth-of-type(2) li[data-repo]>p:first-of-type {
+main > section ul:nth-of-type(2) li[data-repo] > p:first-of-type {
     padding-bottom: 3%;
     border-bottom: solid 1px black;
 
     font-size: clamp(.8em, 3vw, 2em);
 }
 
-main>section ul:nth-of-type(2) li[data-repo]>iframe {
+main > section ul:nth-of-type(2) li[data-repo] > iframe {
     width: 100%;
     height: 80%;
     filter: var(--foto-filter);
 }
 
-main>section ul:nth-of-type(2) li[data-repo]:has(input:checked) img,
-main>section ul:nth-of-type(2) li[data-repo]:has(input:checked) iframe {
+main > section ul:nth-of-type(2) li[data-repo]:has(input:checked) img,
+main > section ul:nth-of-type(2) li[data-repo]:has(input:checked) iframe {
     filter: none;
 }
 
 
-main>section ul:nth-of-type(2) li[data-repo]>a {
+main > section ul:nth-of-type(2) li[data-repo] > a {
     width: 15%;
     aspect-ratio: 1/1;
 
@@ -1023,21 +1023,21 @@ main>section ul:nth-of-type(2) li[data-repo]>a {
     animation: flippingcorner 2s infinite linear alternate both;
 }
 
-main>section ul:nth-of-type(2) li[data-repo]>a[data-action="nextpaper"] {
+main > section ul:nth-of-type(2) li[data-repo] > a[data-action="nextpaper"] {
     right: 0;
 }
 
-main>section ul:nth-of-type(2) li[data-repo]>a[data-action="previospaper"] {
+main > section ul:nth-of-type(2) li[data-repo] > a[data-action="previospaper"] {
     left: 0;
     transform: rotate(90deg);
 }
 
-main>section ul:nth-of-type(2) li[data-repo]>a[data-action="nextpaper"]:hover {
+main > section ul:nth-of-type(2) li[data-repo] > a[data-action="nextpaper"]:hover {
     background-size: 70%;
     animation: none;
 }
 
-main>section ul:nth-of-type(2) li[data-repo]>a[data-action="nextpaper"]:active {
+main > section ul:nth-of-type(2) li[data-repo] > a[data-action="nextpaper"]:active {
     width: 20%;
     background-size: 100%;
 }
@@ -1052,7 +1052,7 @@ main>section ul:nth-of-type(2) li[data-repo]>a[data-action="nextpaper"]:active {
     }
 }
 
-main>section ul:nth-of-type(2) li[data-repo]>label {
+main > section ul:nth-of-type(2) li[data-repo] > label {
     width: fit-content;
     height: fit-content;
 
@@ -1064,20 +1064,20 @@ main>section ul:nth-of-type(2) li[data-repo]>label {
     font-size: clamp(.8em, 3vw, 2em);
 }
 
-main>section ul:nth-of-type(2) li[data-repo]>label input {
+main > section ul:nth-of-type(2) li[data-repo] > label input {
     margin-right: .5em;
 }
 
-main>section ul:nth-of-type(2) li[data-repo]:has(input:checked) label {
+main > section ul:nth-of-type(2) li[data-repo]:has(input:checked) label {
     text-decoration: line-through;
 }
 
-main>section ul:nth-of-type(2) li[data-repo]> {
+main > section ul:nth-of-type(2) li[data-repo] >  {
     transform: rotateX(0deg);
     transition: 2s;
 }
 
-main>section ul:nth-of-type(2) li[data-repo]>div[data-value="papernummber"] {
+main > section ul:nth-of-type(2) li[data-repo] > div[data-value="papernummber"] {
     width: 10%;
     height: fit-content;
 
@@ -1091,7 +1091,7 @@ main>section ul:nth-of-type(2) li[data-repo]>div[data-value="papernummber"] {
     bottom: 0;
 }
 
-main>section ul:nth-of-type(2) li[data-repo]>a[data-action="demo"] {
+main > section ul:nth-of-type(2) li[data-repo] > a[data-action="demo"] {
     font-family: var(--HP-font);
     text-transform: uppercase;
     text-align: center;
@@ -1107,14 +1107,14 @@ main>section ul:nth-of-type(2) li[data-repo]>a[data-action="demo"] {
     font-size: clamp(.8em, 3vw, 2em);
 }
 
-main>section ul:nth-of-type(2) li[data-repo]>a[data-action="demo"]:hover {
+main > section ul:nth-of-type(2) li[data-repo] > a[data-action="demo"]:hover {
     text-decoration: underline;
     text-decoration-color: var(--cover-color);
     text-underline-position: under;
     color: var(--cover-color);
 }
 
-main>section ul:nth-of-type(2) li[data-repo]>code {
+main > section ul:nth-of-type(2) li[data-repo] > code {
     width: 100%;
     height: 70%;
     overflow-x: hidden;
@@ -1123,20 +1123,20 @@ main>section ul:nth-of-type(2) li[data-repo]>code {
     font-size: clamp(.5em, 3vw, 1.5em);
 }
 
-main>section ul:nth-of-type(2) li[data-repo]>code img {
+main > section ul:nth-of-type(2) li[data-repo] > code img {
     width: 100%;
 }
 
-main>section ul:nth-of-type(2) li[data-repo]>code::-webkit-scrollbar {
+main > section ul:nth-of-type(2) li[data-repo] > code::-webkit-scrollbar {
     width: 2vw;
 }
 
-main>section ul:nth-of-type(2) li[data-repo]>code::-webkit-scrollbar-track {
+main > section ul:nth-of-type(2) li[data-repo] > code::-webkit-scrollbar-track {
     background-color: transparent;
 
 }
 
-main>section ul:nth-of-type(2) li[data-repo]>code::-webkit-scrollbar-thumb {
+main > section ul:nth-of-type(2) li[data-repo] > code::-webkit-scrollbar-thumb {
     background-color: var(--cover-color);
     border-radius: 5em;
 }
@@ -1150,15 +1150,15 @@ main>section ul:nth-of-type(2) li[data-repo]>code::-webkit-scrollbar-thumb {
 
 
 @media (min-width: 590px) {
-    main>section {
+    main > section {
         --width: 30%;
     }
 
-    main>section.bookopening {
+    main > section.bookopening {
         --width: 40%;
     }
 
-    main>section>a:first-of-type {
+    main > section > a:first-of-type {
         font-size: 2.5vw;
     }
 
@@ -1169,43 +1169,43 @@ main>section ul:nth-of-type(2) li[data-repo]>code::-webkit-scrollbar-thumb {
     }
 
 
-    main>section ul:nth-of-type(2) li[data-repo]>label {
+    main > section ul:nth-of-type(2) li[data-repo] > label {
         font-size: clamp(.8em, 1.8vw, 2em);
     }
 
 
-    main>section ul:nth-of-type(2) li p {
+    main > section ul:nth-of-type(2) li p {
         font-size: clamp(.8em, 2vw, 4em);
     }
 
-    main>section ul:nth-of-type(2) li[data-repo]>p:first-of-type {
+    main > section ul:nth-of-type(2) li[data-repo] > p:first-of-type {
         font-size: clamp(.8em, 1.5vw, 2em);
     }
 
-    main>section ul:nth-of-type(2) li[data-repo]>h3 {
+    main > section ul:nth-of-type(2) li[data-repo] > h3 {
         font-size: clamp(1em, 2vw, 2.5em);
     }
 
-    main>section ul:nth-of-type(2) li[data-repo]>code::-webkit-scrollbar,
-    main>section.bookopening ul:nth-of-type(2) li::-webkit-scrollbar {
+    main > section ul:nth-of-type(2) li[data-repo] > code::-webkit-scrollbar,
+    main > section.bookopening ul:nth-of-type(2) li::-webkit-scrollbar {
         width: 1vw;
     }
 
-    main>section ul:nth-of-type(2) li[data-repo]>code {
+    main > section ul:nth-of-type(2) li[data-repo] > code {
         font-size: clamp(.5em, 1.5vw, 1.5em);
     }
 
-    main>section ul:nth-of-type(2) li[data-repo]>a[data-action="demo"] {
+    main > section ul:nth-of-type(2) li[data-repo] > a[data-action="demo"] {
         font-size: clamp(.8em, 2vw, 2em);
     }
 }
 
 @media (min-width: 1100px) {
-    main>section {
+    main > section {
         --width: 15%;
     }
 
-    main>section.bookopening {
+    main > section.bookopening {
         --width: 27%;
     }
 
@@ -1215,37 +1215,37 @@ main>section ul:nth-of-type(2) li[data-repo]>code::-webkit-scrollbar-thumb {
         left: calc(50% - 15vw/2);
     }
 
-    main>section>a:first-of-type {
+    main > section > a:first-of-type {
         font-size: 1.5vw;
     }
 
-    main>section ul:nth-of-type(2) li[data-repo]>label {
+    main > section ul:nth-of-type(2) li[data-repo] > label {
         font-size: clamp(.8em, 1vw, 2em);
     }
 
-    main>section ul:nth-of-type(2) li p {
+    main > section ul:nth-of-type(2) li p {
         font-size: clamp(.8em, 1.2vw, 2em);
     }
 
 
-    main>section ul:nth-of-type(2) li h3 {
-        font-size: clamp(.8em, 3.5vw, 2em);
+    main > section ul:nth-of-type(2) li h3 {
+        font-size: clamp(.8em, 3.5vw, 3.5em);
     }
 
-    main>section ul:nth-of-type(2) li[data-repo]>p:first-of-type {
+    main > section ul:nth-of-type(2) li[data-repo] > p:first-of-type {
         font-size: clamp(.8em, 1vw, 2em);
     }
 
-    main>section ul:nth-of-type(2) li[data-repo]>code::-webkit-scrollbar,
-    main>section.bookopening ul:nth-of-type(2) li::-webkit-scrollbar {
+    main > section ul:nth-of-type(2) li[data-repo] > code::-webkit-scrollbar,
+    main > section.bookopening ul:nth-of-type(2) li::-webkit-scrollbar {
         width: .5vw;
     }
 
-    main>section ul:nth-of-type(2) li[data-repo]>code {
+    main > section ul:nth-of-type(2) li[data-repo] > code {
         font-size: clamp(.5em, 1vw, 1.5em);
     }
 
-    main>section ul:nth-of-type(2) li[data-repo]>a[data-action="demo"] {
+    main > section ul:nth-of-type(2) li[data-repo] > a[data-action="demo"] {
         font-size: clamp(.8em, 1vw, 2em);
     }
 }

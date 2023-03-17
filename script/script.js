@@ -3,7 +3,7 @@ import { onRouteChanged } from './router.js';
 import { displayLoading } from './modules/display.js';
 
 let Alldata;                             // Declare a variable named "Alldata" to store fetched data.
-const skipZeroState = document.querySelector('body>span button')
+const skipZeroState = document.querySelector('body>span:first-of-type button');
 
 skipZeroState.addEventListener("click", () =>{
   skipZeroState.parentNode.classList.add('skip');
