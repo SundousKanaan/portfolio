@@ -2,9 +2,12 @@ import { fetchData } from './modules/fetch.js';
 import { onRouteChanged } from './router.js';
 import { displayLoading } from './modules/display.js';
 
-// import { displayLoading } from './modules/display.js';
-
 let Alldata;                             // Declare a variable named "Alldata" to store fetched data.
+const skipZeroState = document.querySelector('body>span button')
+
+skipZeroState.addEventListener("click", () =>{
+  skipZeroState.parentNode.classList.add('skip');
+})
 
 // Eventlisteners
 window.addEventListener('hashchange', function () {

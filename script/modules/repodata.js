@@ -14,6 +14,7 @@ export function getrepoData(data, documentatie){
     <h2>${data.name}</h2>
     <label ><input type="checkbox">Filter</label>
     <iframe src="${data.homepage}" frameborder="0" ></iframe>
+    <a href="${data.homepage}" data-action="demo" >live demo</a>
     <a href="#repo/nextpaper" data-action="nextpaper"></a>
     <div data-value="papernummber">${pageNummber}</div>
     `;
