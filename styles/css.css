@@ -275,7 +275,11 @@ body > span {
     background-size: contain;
 
     position: relative;
+
 }
+
+
+
 
 body > span.skip {
     display: none;
@@ -308,6 +312,18 @@ body > span button {
     transition: .5s;
     transform: scale(.7);
     transform-origin: center;
+
+    animation: buttoneefect 2s infinite linear alternate ;
+
+}
+
+@keyframes buttoneefect{
+    from{
+        transform: scale(.8)
+    }
+    to{
+        transform: scale(.6);
+    }
 }
 
 body > span button:focus,
@@ -315,6 +331,7 @@ body > span button:hover {
     color: var(--loading-background);
     background-color: var(--cover-color);
     border-color: transparent;
+    transform: scale(1);
 }
 
 body > span button:active {
