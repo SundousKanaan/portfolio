@@ -38,6 +38,5 @@ export function getrepoData(data, documentatie){
         ulDataChilderen[i].dataset.repo = `${data.name}`;
     }
 
-    // console.log(ulElement);
     return ulElement;
 }

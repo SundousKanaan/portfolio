@@ -1,5 +1,6 @@
 import { ulElement } from './data.js';
-const loadingscherm = document.querySelector('body>div')
+const loadingscherm = document.querySelector('body>div');
+const audio = document.querySelector('body > Audio');
 
 export async function displayLoading() {
 
@@ -8,8 +9,9 @@ export async function displayLoading() {
     // to stop loading after some time
     setTimeout(() => {
         loadingscherm.classList.remove("onloading");
-    }, 5000);
 
+        audio.play();
+    }, 5000);
 }
 
 export function pageLoading() {
@@ -37,17 +39,6 @@ export function errorLoading() {
     </li>
     `;
 }
-
-// export function errorscreen() {
-//   const errorscreen =`
-//   <div class="loading">
-//     <span></span>
-//       <span></span>
-//       <span></span>
-//   </div>
-//   `;
-//   return errorscreen;
-// }
 
 
 

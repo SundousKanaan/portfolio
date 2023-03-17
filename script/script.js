@@ -26,3 +26,4 @@ async function dataDisplay() {
     console.log(error);
   }
 }
+
