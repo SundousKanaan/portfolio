@@ -1,52 +1,61 @@
-import { fetchData, fetchreposData, fetchRepo, fetchRepoContents } from './fetch.js';
-import { getrepoData } from './repodata.js';
-import { pageLoading, errorLoading } from './display.js';
+import {
+  fetchData,
+  fetchreposData,
+  fetchRepo,
+  fetchRepoContents,
+} from "./fetch.js";
+import { getrepoData } from "./repodata.js";
+import { pageLoading, errorLoading } from "./display.js";
 
-const ulTitels = document.querySelector('main > section ul:last-of-type');
-export let ulElement = document.querySelector('main > section ul:nth-of-type(2)');
-
-
+const ulTitels = document.querySelector("main > section ul:last-of-type");
+export let ulElement = document.querySelector(
+  "main > section ul:nth-of-type(2)"
+);
 
 // get titles labels
 export async function mijnRepos() {
-    const data = await fetchreposData();
-    const mijnTitels = data.map(repo => repo.name);
+  const data = await fetchreposData();
+  const FetchedTitels = data.map((repo) => repo.name);
 
-    const liElement = document.createElement('li');
-    const title = document.createElement('a');
+  //   ! const repo's array to gate specific repo's and not all repo's - add in 4-2-2025
+  const mijnTitels = [
+    "Blokweb",
+    "FvD",
+    "Radarpanel",
+    "BusinessCard",
+    " portfolio2023-2024",
+    "RoadToSenior",
+  ];
 
-    title.href = "#repo/over";
-    title.innerText = "over";
+  const liElement = document.createElement("li");
+  const title = document.createElement("a");
+
+  title.href = "#repo/over";
+  title.innerText = "over";
+  liElement.appendChild(title);
+  ulTitels.appendChild(liElement);
+
+  mijnTitels.forEach((repoTitle) => {
+    const liElement = document.createElement("li");
+    const title = document.createElement("a");
+
+    title.href = "#repo/" + repoTitle;
+    title.innerText = repoTitle;
     liElement.appendChild(title);
     ulTitels.appendChild(liElement);
-
-    mijnTitels.forEach((repoTitle) => {
-        const liElement = document.createElement('li');
-        const title = document.createElement('a');
-
-        title.href = "#repo/" + repoTitle;
-        title.innerText = repoTitle;
-        liElement.appendChild(title);
-        ulTitels.appendChild(liElement);
-    });
+  });
 }
 
 mijnRepos();
 
-
-
-
-
-
 // get my data
 
 export async function mijndata(API_URL) {
-    try {
-        pageLoading();
-        const data = await fetchData(API_URL);
-    
-        ulElement.innerHTML =
-            `
+  try {
+    pageLoading();
+    const data = await fetchData(API_URL);
+
+    ulElement.innerHTML = `
         <li>
         <h2>${data.name}</h2>
         <section>
@@ -64,43 +73,41 @@ export async function mijndata(API_URL) {
         <p>Ik blijf mijn tekeningen steeds ontwikkelen, en hoop dat ze in de toekomst zó goed worden, dat ze een “merk” worden. Ik kijk veel Japanse series, die vind ik leuk en createf in verschillende opzichten, zoals de toekomstige programma's en innovatieve technische ideeën.</p>
         </section>
         </li> 
-        `
-    } catch (error) {
-        errorLoading();
-    }
+        `;
+  } catch (error) {
+    errorLoading();
+  }
 }
-
-
 
 // get repo data
 export async function repodata(repoTitel) {
-    try {
-        pageLoading();
-        const data = await fetchRepo(repoTitel);
-        const path = "";
-        const repoContents = await fetchRepoContents(repoTitel, path);
-    
-        let documentatie = "";
-        let ulVull = "";
-    
-        if (repoContents.some(content => content.path === "Documentatie.md")) {
-            console.log("yes documentatie");
-    
-            const path = "Documentatie.md";
-            const repoContents = await fetchRepoContents(repoTitel, path);
-            const documentContent = repoContents.content;
-            documentatie = decodeURIComponent(atob(documentContent));
-            ulVull = getrepoData(data, documentatie);
-        } else {
-            documentatie = "Er is geen documentatie toegevoegd voor deze repo.";
-            console.log(documentatie);
-            ulVull = getrepoData(data, documentatie);
-        }
-    
-        return ulElement;
-    } catch (error) {
-        errorLoading();
+  try {
+    pageLoading();
+    const data = await fetchRepo(repoTitel);
+    const path = "";
+    const repoContents = await fetchRepoContents(repoTitel, path);
+
+    let documentatie = "";
+    let ulVull = "";
+
+    if (repoContents.some((content) => content.path === "Documentatie.md")) {
+      console.log("yes documentatie");
+
+      const path = "Documentatie.md";
+      const repoContents = await fetchRepoContents(repoTitel, path);
+      const documentContent = repoContents.content;
+      documentatie = decodeURIComponent(atob(documentContent));
+      ulVull = getrepoData(data, documentatie);
+    } else {
+      documentatie = "Er is geen documentatie toegevoegd voor deze repo.";
+      console.log(documentatie);
+      ulVull = getrepoData(data, documentatie);
     }
+
+    return ulElement;
+  } catch (error) {
+    errorLoading();
+  }
 }
 
 // repodata("Rijksmuseum");
